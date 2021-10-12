@@ -1,0 +1,78 @@
+/* General styles */
+.headerTitle{
+    background-color: #2880c1;
+    margin: 0%;
+    padding: 0%;
+    height: 60px;
+    width: 100vw;
+}
+
+h1{
+    color: white;
+    margin: 0%;
+    padding: 7px;
+}
+
+/* Sección general del Quiz */
+.mainPage{
+    display: block;
+    background: #C2DFEE;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.divCenterSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* SPA */
+.quizSection{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+}
+
+
+.questionSection{
+    width: 90%;
+    min-height: 200px;
+    border: 1px solid rgb(0, 26, 255);
+}
+
+.answersSection{
+    width: 90%;
+    min-height: 450px;
+    border: 1px solid rgb(81, 143, 40);
+}
+
+.submitSection{
+    width: 90%;
+    min-height: 80px;
+    border: 1px solid rgb(207, 143, 46);
+}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) and (min-width: 400px){
+    h1{
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 401px){
+    h1{
+        font-size: 1em;
+    }
+}
