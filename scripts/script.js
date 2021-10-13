@@ -16,18 +16,18 @@ const getQuestions = async () => {
     }
 }
 getQuestions() 
-
+.then((data)=> console.log(data))
 // mapear cada pregunta, en c/u iteracción. Crear elemento "pregunta" . Sigu. iteracc, elimino nodos y pongo nuevos (.map)
 
-const getQuestionData = () => {
-    questionsArray.map(async(element) => {  //usando map se puede evitar el for 
-        let question = await element.question //accedo a la data dentro del elemento 
-        // let allQuestion= await [question]    
-        console.log(question)        //metemos la question en el h3 
-    })
-    return question
-    }
-getQuestionData()
+// const getQuestionData = () => {
+//     questionsArray.map(async(element) => {  //usando map se puede evitar el for 
+//         let question = await element.question //accedo a la data dentro del elemento 
+//         // let allQuestion= await [question]    
+//         console.log(question)        //metemos la question en el h3 
+//     })
+//     return question
+//     }
+// getQuestionData()
 
 // Imprime la pregunta en el HTML
 // async function showQuestion(){
