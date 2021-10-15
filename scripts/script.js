@@ -29,11 +29,13 @@ getQuestions()
 //     }
 // getQuestionData()
 
-// Imprime la pregunta en el HTML
+// Imprimeee la pregunta en el HTML
 // async function showQuestion(){
 //     questionTexts.innerText = await questions;
 // }
 // showQuestion()
+
+
 
 
 
