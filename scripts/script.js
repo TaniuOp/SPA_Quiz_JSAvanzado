@@ -29,6 +29,7 @@ const getQuestions = async () => {
         console.log("we had an error obtaining the data")
     }
 }
+
 //questionNumber será el numero de la pregunta donde estemos (es decir, el index del array +1)[0]
 const getQuestionData = async (questionNumber) => {
     let myQuestion = await allData.TheQuestion[questionNumber]
