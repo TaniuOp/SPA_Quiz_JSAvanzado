@@ -79,3 +79,166 @@ await setDoc(doc(db, "Halloween", "User"), {
 // querySnapshot.forEach((doc) => {
 //   console.log(doc.id, " => ", doc.data());
 // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// LOGIN FIREBASE
+
+// FIREBASE LOGIN
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+const firebaseConfig = {
+    apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
+    authDomain: "quizztaniuruben.firebaseapp.com",
+    projectId: "quizztaniuruben",
+    storageBucket: "quizztaniuruben.appspot.com",
+    messagingSenderId: "692644756869",
+    appId: "1:692644756869:web:be9d16807787b8e5df98ec"
+  };  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// CREAR USUARIO
+
+document.getElementById("buttonSubmit").addEventListener("click",()=>{
+    let email = document.getElementById("rUsuario").value
+    let password = document.getElementById("rPassword").value
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Creado correctamente")
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode + errorMessage)
+    });
+    
+})
+
+// LOGIN
+
+document.getElementById("buttonLogin").addEventListener("click",()=>{
+    let email = document.getElementById("lUsuario").value
+    let password = document.getElementById("lPassword").value
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Login CORRECTO")
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode + errorMessage)
+    });
+})
+
+// SIGN OUT
+
+
+document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
+    signOut(auth).then(() => {
+      console.log("Ya NO estas logeado")
+    }).catch((error) => {
+        console.log("Erroooooor")
+    });
+
+})
