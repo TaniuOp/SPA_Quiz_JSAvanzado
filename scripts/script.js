@@ -50,8 +50,8 @@ var getRandomInt = Math.floor(Math.random() * 10);
 console.log(getRandomInt)
 
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
-let questionButton = document.getElementById("nextButton")
-questionButton.addEventListener("click", startData)
+// let questionButton = document.getElementById("nextButton")
+// questionButton.addEventListener("click", startData)
 
 async function startData(){
     await getQuestions() 
