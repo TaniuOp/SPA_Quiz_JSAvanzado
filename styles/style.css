@@ -52,7 +52,6 @@ h1{
 .questionSection{
     width: 90%;
     min-height: 200px;
-    border: 1px solid rgb(0, 26, 255);
     display: flex;
     justify-content: center;
 }
@@ -61,7 +60,6 @@ h1{
 .answersSection{
     width: 90%;
     min-height: 450px;
-    border: 1px solid rgb(81, 143, 40);
 }
 
 /* blocks to align answers */
@@ -97,15 +95,13 @@ li{
 }
 
 section.answersSection input[type="radio"]:focus + label {
-    border: 2px solid rgb(50, 202, 164);
-    background-color: rgba(74, 202, 202, 0.144);
+    background-color: rgba(97, 176, 176, 0.276);
 }
 
 /* SUBMIT */
 .submitSection{
     width: 90%;
     min-height: 50px;
-    border: 1px solid rgb(207, 143, 46);
     display: flex;
     justify-content:right;
 }
@@ -125,23 +121,20 @@ button:hover {
   }
 
 /* RESPONSIVE */
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1000px){
     h1{
         font-size: 1.3em;
     }
     .questionSection{
-        border: 1px solid rgb(4, 10, 69);
         min-height: auto;
     }
     
     .answersSection{
         min-height: fit-content;
-        border: 1px solid rgb(18, 41, 2);
     }
     
     .submitSection{
         max-height: 30px;
-        border: 1px solid rgb(80, 52, 8);
     }
 
     div.answerblockone, div.answerblocktwo{
@@ -163,4 +156,5 @@ button:hover {
         padding: 4% 5%;
     }
 }
+
 
