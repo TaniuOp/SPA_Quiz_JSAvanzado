@@ -31,22 +31,40 @@ const getQuestions = async () => {
 }
 
 //questionNumber será el numero de la pregunta donde estemos (es decir, el index del array +1)[0]
+let myQuestion 
+let myBadAnswers 
+let myGoodAnswer
+let allTheQuestionData = []
+
 const getQuestionData = async (questionNumber) => {
-    let myQuestion = await allData.TheQuestion[questionNumber]
-    let myBadAnswers = await allData.TheBadAnswers[questionNumber]
-    let myGoodQuestion = await allData.TheGoodAnswer[questionNumber]
-    let allTheQuestionData= [myQuestion, myBadAnswers, myGoodQuestion]
+    myQuestion = await allData.TheQuestion[questionNumber]
+    myBadAnswers = await allData.TheBadAnswers[questionNumber]
+    myGoodAnswer = await allData.TheGoodAnswer[questionNumber]
+    allTheQuestionData= [myQuestion, myBadAnswers, myGoodAnswer]
     console.log(allTheQuestionData)
     return allTheQuestionData // devuelve toda la info necesaria para montar la pantalla de pregunta y respuestas (pregunta, 3 respuestas incorrectas y una correcta)
 }
 
+//Generamos un num random para pasarle a la pregunta (del 1 al 10)
+var getRandomInt = Math.floor(Math.random() * 10);
+console.log(getRandomInt)
+
+//Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
+let questionButton = document.getElementById("nextButton")
+questionButton.addEventListener("click", startData)
+
 async function startData(){
     await getQuestions() 
-    await getQuestionData(6) //este num si lo cambiamos dinamicamente envía la pregunta del array que corresponde con su idex 
+    await getQuestionData(getRandomInt) 
+    document.getElementById("questionText").textContent = await myQuestion
+    document.getElementById("optiononeLabel").textContent = await myBadAnswers[0];
+    document.getElementById("optiontwoLabel").textContent = await myBadAnswers[1];
+    document.getElementById("optionthreeLabel").textContent = await myBadAnswers[2];
+    document.getElementById("optionfourLabel").textContent = await myGoodAnswer;
 }
-startData() //iniciamos las funciones anteriormente declaradas 
 
-//ideal sería que la funcion getQuestionData se llamara con el botón de "Siguiente" y enviará como parametro el numero de la siguiente pregunta 
+//la funcion getQuestionData se llamara con el botón de "Siguiente" y enviará como parametro el numero de la siguiente pregunta 
+//To do: Que el orden de las respuestas sea random para que no quede siempre la correcta en la 4rta 
 
 
 
