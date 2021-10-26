@@ -8,22 +8,35 @@
     <title>Home - Halloween Quiz</title>
 </head>
 <body>
-    
-
-
+    <!-- ACCESO -->
+    <div class="divLogin">
+        <form>
+            <!-- Usuario -->
+            <label for="lUsuario">Nombre de Usuario</label><br>
+            <input type="text" id="lUsuario" name="lUsuario" value=""><br>
+            <!-- Password -->
+            <label for="lPassword">Tu contraseña</label><br>
+            <input type="text" id="lPassword" name="lPassword" value=""><br><br>
+            <!-- Submit -->
+            <input id="buttonLogin" type="button" value="Logeate">
+        </form>  
+    </div>
 
 
     <h1>Página de bienvenida + gráfica de últimos resultados</h1>
     <section>
-    <h2>Welcome to the Quiz</h2>
-        <a href="./pages/question.html">Take the quiz</a>
+        <h2>Welcome to the Quiz</h2>
+        <h3>What´s your name?</h3>
+        <input type="text" name="" id="username" autocomplete="off" />
+        <button id="singUpButton" onclick="window.location.href='../pages/question.html'">Start playing</button>
     </section>
 
     <section>
     <h2>Your Stats</h2>
+        <p>Aqui va gráfica con últimos resultados</p>
     </section>
         
     <script type="module" src="./scripts/script.js"></script> 
-    <!-- para que funcionen los imports -->
+    <!-- se ñade "module" al script para que funcionen los imports -->
 </body>
 </html>
