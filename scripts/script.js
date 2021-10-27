@@ -7,7 +7,7 @@ const getQuestions = async () => {
     try{
         let questionsUrl = await fetch('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
         let questionsJson = await questionsUrl.json()
-        questionsArray= questionsJson.results //nos devuelve un array con 10 preguntas. 
+        questionsArray = questionsJson.results //nos devuelve un array con 10 preguntas. 
         let arrayQuestions =  []
         let arrayBadAnswers =  []
         let arrayGoodAnswers =  []
@@ -22,7 +22,7 @@ const getQuestions = async () => {
             TheBadAnswers: arrayBadAnswers,
             TheGoodAnswer: arrayGoodAnswers
         }
-        console.log(allData)
+        console.log(`Objeto con preguntas, y respuestas correctas ${allData}`)
         return allData
     }
     catch (error) {
@@ -50,8 +50,8 @@ var getRandomInt = Math.floor(Math.random() * 10);
 console.log(getRandomInt)
 
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
-let questionButton = document.getElementById("nextButton")
-questionButton.addEventListener("click", startData)
+// let questionButton = document.getElementById("nextButton")
+// questionButton.addEventListener("click", startData)
 
 async function startData(){
     await getQuestions() 
@@ -68,3 +68,81 @@ async function startData(){
 
 
 
+// await setDoc(doc(db, "Halloween", "User"), {
+//     name: "Taniu",
+//     goodQuestions: "3",
+//     errors: "7"
+// });
+// recoger info de interacción y crear variable (para quiz)
+// Firebase QUIZ 
+// const q = query(collection(db, "Halloween"));
+// const querySnapshot = await getDocs(q);
+// querySnapshot.forEach((doc) => {
+//   console.log(doc.id, " => ", doc.data());
+// });
+
+
+// LOGIN FIREBASE
+
+// FIREBASE LOGIN
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+const firebaseConfig = {
+    apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
+    authDomain: "quizztaniuruben.firebaseapp.com",
+    projectId: "quizztaniuruben",
+    storageBucket: "quizztaniuruben.appspot.com",
+    messagingSenderId: "692644756869",
+    appId: "1:692644756869:web:be9d16807787b8e5df98ec"
+  };
+  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// CREAR USUARIO
+
+document.getElementById("buttonSubmit").addEventListener("click",()=>{
+    let email = document.getElementById("rUsuario").value
+    let password = document.getElementById("rPassword").value
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Creado correctamente")
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode + errorMessage)
+    });
+    
+})
+
+// LOGIN
+
+document.getElementById("buttonLogin").addEventListener("click",()=>{
+    let email = document.getElementById("lUsuario").value
+    let password = document.getElementById("lPassword").value
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Login CORRECTO")
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode + errorMessage)
+    });
+})
+
+// SIGN OUT
+
+
+document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
+    signOut(auth).then(() => {
+      console.log("Ya NO estas logeado")
+    }).catch((error) => {
+        console.log("Erroooooor")
+    });
+
+})
