@@ -1,6 +1,7 @@
 /* GENERAL STYLES */
 *{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-family: 'Rampart One', cursive;
+    font-size: 25px;
 }
 
 .headerTitle{
@@ -39,8 +40,9 @@ main {
 
 
 #logo {
-    width: 400px;
+    width: 700px;
     display: flex;
+    margin: 6em;
 }
 
 #logo img {
@@ -59,21 +61,27 @@ main {
 
 #registroLogin {
     width: 100%;
-    height: 20vh;
+    height: 24vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .divRegister, .divLogin {
-    width: 15vw;
+    width: 20vw;
     height: 19vh;
-    border-radius: 3px;
+    border-radius: 8px;
     background-color: white;
-    margin: 0 2rem 0 2rem;
+    margin: 0 3rem 0 3rem;
     padding: 1rem;
     box-shadow: 11px 7px 25px -1px rgba(0,0,0,0.75)
 
 }
+
+form input {
+    width: 100%;
+}
+
 
 
 
