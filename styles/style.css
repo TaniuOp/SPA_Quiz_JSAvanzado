@@ -18,6 +18,21 @@ h1{
 }
 
 
+/* LANDING CSS */
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(circle at 42.17% 44.52%, #ff8eef 0, #fd7feb 16.67%, #e16ce3 33.33%, #be55d8 50%, #9840cd 66.67%, #7333c6 83.33%, #482ec2 100%);
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
 /* RESPONSIVE */
 @media screen and (max-width: 1000px){
     h1{
