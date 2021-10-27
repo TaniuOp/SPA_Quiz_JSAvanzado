@@ -8,43 +8,57 @@
     <title>Home - Halloween Quiz</title>
 </head>
 <body>
-    <!-- REGISTRO -->
-    <div class="divRegister">
-        <form>
-            <!-- Usuario -->
-            <label for="rUsuario">E-mail</label><br>
-            <input type="email" id="rUsuario" name="rUsuario" value=""><br>
-            <!-- Password -->
-            <label for="rPassword">Tu contraseña</label><br>
-            <input type="password" id="rPassword" name="rPassword" value=""><br><br>
-            <!-- Submit -->
-            <input id="buttonSubmit" type="button" value="Registrar">
-        </form>
-    </div>
+    <main>
+        <div id="conexion">
+            <div id="luzlogin"></div>
+            <div class="texto">
+                <h2>Bienvenido al Quizz</h2>
+            </div>
+        </div>
+        <div id="logo">
+            <img src="./assets/logo.png" alt="">
+        </div>
+        <div id="registroLogin">
+            <!-- REGISTRO -->
+            <div class="divRegister">
+                <form>
+                    <!-- Usuario -->
+                    <label for="rUsuario">E-mail</label><br>
+                    <input type="email" id="rUsuario" name="rUsuario" value=""><br>
+                    <!-- Password -->
+                    <label for="rPassword">Tu contraseña</label><br>
+                    <input type="password" id="rPassword" name="rPassword" value=""><br><br>
+                    <!-- Submit -->
+                    <input id="buttonSubmit" type="button" value="Registrar">
+                </form>
+            </div>     
+            <div class="divLogin">
+                <form>
+                    <!-- Usuario -->
+                    <label for="lUsuario">Nombre de Usuario</label><br>
+                    <input type="text" id="lUsuario" name="lUsuario" value=""><br>
+                    <!-- Password -->
+                    <label for="lPassword">Tu contraseña</label><br>
+                    <input type="text" id="lPassword" name="lPassword" value=""><br><br>
+                    <!-- Submit -->
+                    <input id="buttonLogin" type="button" value="Logeate">
+                </form>  
+            </div>
+
+        </div>
+        <!-- ACCESO -->
         
-    <!-- ACCESO -->
-    <div class="divLogin">
+        <!-- SIGN OUT -->
         <form>
-            <!-- Usuario -->
-            <label for="lUsuario">Nombre de Usuario</label><br>
-            <input type="text" id="lUsuario" name="lUsuario" value=""><br>
-            <!-- Password -->
-            <label for="lPassword">Tu contraseña</label><br>
-            <input type="text" id="lPassword" name="lPassword" value=""><br><br>
-            <!-- Submit -->
-            <input id="buttonLogin" type="button" value="Logeate">
-        </form>  
-    </div>
+            <input id="buttonLoginOut" type="button" value="Log out">
+        </form>
+   
+    </main>
     
-    </main> 
-    <!-- SIGN OUT -->
-    <form>
-        <input id="buttonLoginOut" type="button" value="Log out">
-    </form>
 
 
 
-    <h1>Página de bienvenida + gráfica de últimos resultados</h1>
+    <!-- <h1>Página de bienvenida + gráfica de últimos resultados</h1>
     <section>
         <h2>Welcome to the Quiz</h2>
         <h3>What´s your name?</h3>
@@ -55,7 +69,7 @@
     <section>
     <h2>Your Stats</h2>
         <p>Aqui va gráfica con últimos resultados</p>
-    </section>
+    </section> -->
         
     <script type="module" src="./scripts/script.js"></script> 
     <!-- se ñade "module" al script para que funcionen los imports -->
