@@ -50,7 +50,7 @@ var getRandomInt = Math.floor(Math.random() * 10);
 console.log(getRandomInt)
 
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
-let questionButton = document.getElementById("nextButton")
+let questionButton = document.getElementById("logo")
 questionButton.addEventListener("click", startData)
 
 async function startData(){
@@ -65,21 +65,6 @@ async function startData(){
 
 //la funcion getQuestionData se llamara con el botón de "Siguiente" y enviará como parametro el numero de la siguiente pregunta 
 //To do: Que el orden de las respuestas sea random para que no quede siempre la correcta en la 4rta 
-
-
-
-await setDoc(doc(db, "Halloween", "User"), {
-    name: "Taniu",
-    goodQuestions: "3",
-    errors: "7"
-});
-// recoger info de interacción y crear variable (para quiz)
-// Firebase QUIZ 
-const q = query(collection(db, "Halloween"));
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data());
-});
 
 
 // LOGIN FIREBASE
@@ -119,6 +104,7 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
 })
 
 // LOGIN
+let estasLogin = false;
 
 document.getElementById("buttonLogin").addEventListener("click",()=>{
     let email = document.getElementById("lUsuario").value
@@ -126,7 +112,10 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
-        console.log("Login CORRECTO")
+        console.log("Login CORRECTO");
+        cambioLuz(); 
+        estasLogin = true;
+
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -147,8 +136,18 @@ document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
 
 })
 
+//CAMBIO IMAGEN LOGIN
+
+const cambioLuz = () => {
+        document.getElementById("rojoverde").src = "./assets/green_login.png";
+}
+
+const aviso = () => {
+    alert("Porfavor registrate y logeate para iniciar el Quizz")
+}
+
+const botonInicio = () =>{
+}
 
 
-//CAMBIO LOGIN
-
-
+document.getElementById("logo").addEventListener("click", aviso);  
