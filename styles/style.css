@@ -1,26 +1,18 @@
 /* GENERAL STYLES */
 *{
     font-family: 'Rampart One', cursive;
-    font-size: 25px;
+    font-size: 1.3rem;
 }
 
 
-.headerTitle{
-    background-color: #2880c1;
-    margin: 0%;
-    padding: 0%;
-    height: 60px;
-    width: 100vw;
-}
-
-h1{
+h2{
     color: white;
-    margin: 0%;
-    padding: 7px;
+    font-size: 3rem;
+    white-space:nowrap;
 }
-
 
 /* LANDING CSS */
+
 body {
     width: 100vw;
     height: 100vh;
@@ -39,26 +31,54 @@ main {
     flex-flow: column;
 }
 
-
-#logo {
-    width: 700px;
+.conexion {
+    width: 50vw;
+    height: 15vh;
     display: flex;
-    margin: 6em;
+    justify-content: center;
 }
 
-#logo img {
+.luzlogin {
+    width: 5%;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    margin-right: 2rem;
+}
+
+.luzlogin img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.texto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+
+#rojoverde {
     width: 100%;
 }
 
-
-
-#conexion {
-    width: 50vw;
-    height: 10vh;
-    border: 2px solid black;
+#logo {
+    width: 30vw;
     display: flex;
-    justify-content: space-around;
+    margin: 2rem;
+    transition: 0.5s;
 }
+
+#logo:hover {
+    transform: scale(1.3);
+}
+
+
+
+
+
+
 
 #registroLogin {
     width: 100%;
@@ -70,7 +90,6 @@ main {
 
 .divRegister, .divLogin {
     width: 20vw;
-    height: 19vh;
     border-radius: 8px;
     background-color: white;
     margin: 0 3rem 0 3rem;
