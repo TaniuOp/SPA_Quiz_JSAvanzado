@@ -94,6 +94,7 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
     .then((userCredential) => {
         const user = userCredential.user;
         console.log("Creado correctamente")
+        registroToLogin();
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -114,7 +115,8 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
     .then((userCredential) => {
         const user = userCredential.user;
         console.log("Login CORRECTO");
-        cambioLuz(); 
+        cambioLuz();
+        outBoton(); 
         estasLogin = true;
         enlace.href = "./pages/question.html";
         
@@ -132,6 +134,8 @@ document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
     signOut(auth).then(() => {
       console.log("Ya NO estas logeado");
       formDisplay();
+      document.getElementById("rojoverde").src = "./assets/red_login.png";
+
 
     }).catch((error) => {
         console.log("Erroooooor")
@@ -142,6 +146,10 @@ document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
 //CAMBIO DEL COLOR DE LOGIN, Y DESAPARECEN LOS FORMULARIOS CUANDO ESTAS LOGEADO.
 let registroForm = document.getElementById("divRegister");
 let loginForm = document.getElementById("divLogin");
+let loginOut = document.getElementById("out");
+let elLogo = document.getElementById("logo");
+
+let pregunta = document.getElementById("pregunta");
 
 const cambioLuz = () => {
         document.getElementById("rojoverde").src = "./assets/green_login.png";
@@ -155,6 +163,9 @@ const formDisplay = () => {
 }
 
 
+
+
+// FUNCION DE AVISO SI NO ESTAS LOGEADO NO PUEDES EMPEZAR EL QUIZZ Y TE SALE UN AVISO.
 const aviso = () => {
     if(estasLogin == false){
         alert("Porfavor registrate y logeate para iniciar el Quizz");
@@ -163,3 +174,44 @@ const aviso = () => {
 
 
 document.getElementById("logo").addEventListener("click", aviso);  
+
+
+
+
+// BIENVENIDO ES TU PRIMERA VEZ
+
+let si = document.getElementById("si")
+let no = document.getElementById("no")
+
+
+const siLoEs = () => {
+    registroForm.style.display = "inherit";
+    pregunta.style.display = "none";
+    elLogo.style.width = "35vw"
+    elLogo.style.zIndex = "0" 
+}
+
+const noLoEs = () => {
+    loginForm.style.display = "inherit";
+    pregunta.style.display = "none";
+    elLogo.style.width = "35vw"
+    elLogo.style.zIndex = "0" 
+}
+
+
+si.addEventListener("click", siLoEs); 
+no.addEventListener("click", noLoEs);
+
+
+// SI ESTAS LOGIN APARECE EL BOTON LOGIN OUT
+
+const outBoton = () => {
+    loginOut.style.display = "inherit";
+} 
+
+//SI TE REGISTRAS, DESAPARECE EL REGISTRO Y APARECE EL LOGEO
+
+const registroToLogin = () => {
+    registroForm.style.display = "none";
+    loginForm.style.display = "inherit";
+}

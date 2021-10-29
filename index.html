@@ -14,6 +14,13 @@
 </head>
 <body>
     <main>
+        <div id="pregunta">
+            <p>Bienvenido ¿Es tu primera vez?</p>
+            <div id="sino">
+                <div id="si"><p>Si</p></div>
+                <div id="no"><p>No</p></div>
+            </div>
+        </div>
         <div class="conexion">
             <div class="luzlogin">
                 <img id="rojoverde" src="./assets/red_login.png" alt="Luz del login.">
@@ -42,9 +49,9 @@
                 </form>
             </div>     
             <!-- SIGN OUT -->
-            <div class="out">
+            <div id="out">
                 <form>
-                    <input id="buttonLoginOut" type="button" value="Log out">
+                    <input id="buttonLoginOut" type="button" value="Log out :(">
                 </form>
             </div>
             <!-- ACCESO -->
@@ -66,21 +73,6 @@
    
     </main>
     
-
-
-
-    <!-- <h1>Página de bienvenida + gráfica de últimos resultados</h1>
-    <section>
-        <h2>Welcome to the Quiz</h2>
-        <h3>What´s your name?</h3>
-        <input type="text" name="" id="username" autocomplete="off" />
-        <button id="singUpButton" onclick="window.location.href='../pages/question.html'">Start playing</button>
-    </section>
-
-    <section>
-    <h2>Your Stats</h2>
-        <p>Aqui va gráfica con últimos resultados</p>
-    </section> -->
         
     <script type="module" src="./scripts/script.js"></script> 
     <!-- se ñade "module" al script para que funcionen los imports -->
