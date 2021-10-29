@@ -105,6 +105,7 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
 
 // LOGIN
 let estasLogin = false;
+let enlace = document.getElementById("enlace")
 
 document.getElementById("buttonLogin").addEventListener("click",()=>{
     let email = document.getElementById("lUsuario").value
@@ -115,6 +116,8 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
         console.log("Login CORRECTO");
         cambioLuz(); 
         estasLogin = true;
+        enlace.href = "./pages/question.html";
+        
 
     })
     .catch((error) => {
@@ -125,28 +128,37 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
 })
 
 // SIGN OUT
-
-
 document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
     signOut(auth).then(() => {
-      console.log("Ya NO estas logeado")
+      console.log("Ya NO estas logeado");
+      formDisplay();
+
     }).catch((error) => {
         console.log("Erroooooor")
     });
 
 })
 
-//CAMBIO IMAGEN LOGIN
+//CAMBIO DEL COLOR DE LOGIN, Y DESAPARECEN LOS FORMULARIOS CUANDO ESTAS LOGEADO.
+let registroForm = document.getElementById("divRegister");
+let loginForm = document.getElementById("divLogin");
 
 const cambioLuz = () => {
         document.getElementById("rojoverde").src = "./assets/green_login.png";
+        registroForm.style.display = "none";
+        loginForm.style.display = "none";
 }
+
+const formDisplay = () => {
+    registroForm.style.display = "inherit";
+    loginForm.style.display = "inherit";
+}
+
 
 const aviso = () => {
-    alert("Porfavor registrate y logeate para iniciar el Quizz")
-}
-
-const botonInicio = () =>{
+    if(estasLogin == false){
+        alert("Porfavor registrate y logeate para iniciar el Quizz");
+    }
 }
 
 

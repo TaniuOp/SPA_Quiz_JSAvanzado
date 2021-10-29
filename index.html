@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" type="image/png" href="./assets/favicon_logo.png">
     <title>Home - Halloween Quiz</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,22 +23,22 @@
             </div>
         </div>
         <div id="logo">
-            <a href="./pages/question.html">
+            <a id="enlace" href="#">
                 <img src="./assets/logo.png" alt="Imagen del Quizz">
             </a>
         </div>
         <div id="registroLogin">
             <!-- REGISTRO -->
-            <div class="divRegister">
-                <form>
-                    <!-- Usuario -->
+            <div id="divRegister">
+                <form id="form1">
+                    <!--     Usuario -->
                     <label for="rUsuario">E-mail</label><br>
                     <input type="email" id="rUsuario" name="rUsuario" value=""><br>
                     <!-- Password -->
                     <label for="rPassword">Tu contraseña</label><br>
-                    <input type="password" id="rPassword" name="rPassword" value=""><br><br>
+                    <input type="password" id="rPassword" name="rPassword" value="" minlength="6"><br><br>
                     <!-- Submit -->
-                    <input id="buttonSubmit" type="button" value="Registrar">
+                    <input id="buttonSubmit" type="button" value="Regístrate">
                 </form>
             </div>     
             <!-- SIGN OUT -->
@@ -47,7 +48,7 @@
                 </form>
             </div>
             <!-- ACCESO -->
-            <div class="divLogin">
+            <div id="divLogin">
                 <form>
                     <!-- Usuario -->
                     <label for="lUsuario">Nombre de Usuario</label><br>

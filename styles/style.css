@@ -1,145 +1,210 @@
 /* GENERAL STYLES */
-*{
-    font-family: 'Rampart One', cursive;
-    font-size: 1.3rem;
+* {
+  font-family: "Rampart One", cursive;
+  font-size: 1.3rem;
+
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  box-sizing: border-box;
 }
 
-
-h2{
-    color: white;
-    font-size: 3rem;
-    white-space:nowrap;
+h2 {
+  color: white;
+  font-size: 3rem;
+  /* white-space: nowrap; */
+  text-align: center;
 }
 
 /* LANDING CSS */
 
 body {
-    width: 100vw;
-    height: 100vh;
-    background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
 }
 
 main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column;
 }
 
 .conexion {
-    width: 50vw;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .luzlogin {
-    width: 5%;
-    /* background-color: black; */
-    display: flex;
-    justify-content: center;
-    margin-right: 2rem;
+  width: 2vw;
+  /* background-color: black; */
+  display: flex;
+  justify-content: center;
+  margin-right: 2rem;
 }
 
 .luzlogin img {
-    width: 100%;
-    object-fit: contain;
+  width: 45px;
+  object-fit: contain;
 }
 
 .texto {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-
-#rojoverde {
-    width: 100%;
+  /* width: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #logo {
-    width: 30vw;
-    display: flex;
-    margin: 2rem;
-    transition: 0.5s;
+  /* display: flex;
+    justify-content: center; */
+  width: 30vw;
+  /* display: flex; */
+  margin: 2rem;
+  transition: 0.5s;
 }
 
 #logo:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
-
-
-
-
-
+#logo a img {
+  width: 100%;
+}
 
 #registroLogin {
-    width: 100%;
-    height: 24vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* height: 24vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.divRegister, .divLogin {
-    width: 20vw;
-    border-radius: 8px;
-    background-color: white;
-    margin: 0 3rem 0 3rem;
-    padding: 1rem;
-    box-shadow: 11px 7px 25px -1px rgba(0,0,0,0.75)
+#divRegister,
+#divLogin {
+  /* width: 20vw; */
 
+  min-width: 20vw;
+  white-space: nowrap;
+  border-radius: 8px;
+  background-color: white;
+  margin: 0 3rem 0 3rem;
+  padding: 1rem;
+  box-shadow: 11px 7px 25px -1px rgba(0, 0, 0, 0.75);
 }
 
 form input {
-    width: 100%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 5px;
 }
+
+
+
+/* BOTONES PERSONALIZADOS DEL FORM */
+#buttonLoginOut {
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%)
+}
+
+#buttonLoginOut {
+  border: 1px solid white;
+  padding: 5px;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+
+
+ #buttonLoginOut:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+
+ #buttonSubmit, #buttonLogin {background-image: linear-gradient(to right, #FDFC47 0%, #24FE41  51%, #FDFC47  100%)}
+ #buttonSubmit, #buttonLogin {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+  #buttonSubmit:hover, #buttonLogin:hover {
+    background-position: right center; /* change the direction of the change here */
+    text-decoration: none;
+  }
+ 
+
+
+
+
+
+
+
 
 
 
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px){
-    h1{
-        font-size: 1.3em;
-    }
-    .questionSection{
-        min-height: auto;
-    }
-    
-    .answersSection{
-        min-height: fit-content;
-    }
-    
-    .submitSection{
-        max-height: 30px;
-    }
+@media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 1.3em;
+  }
+  .questionSection {
+    min-height: auto;
+  }
 
-    div.answerblockone, div.answerblocktwo{
-        padding-bottom: 0%;
-        padding-top: 0%;
-        margin-bottom: 0%;
-        margin-top: 0%;
-    }
-    
-    li{
-        background-color: rgb(198, 216, 191);
-        padding: 4px;
-        margin: 8px;
-        width: 90%;
-        height: 60px;
-    }
+  .answersSection {
+    min-height: fit-content;
+  }
 
-    ul{
-        padding: 4% 5%;
-    }
+  .submitSection {
+    max-height: 30px;
+  }
+
+  div.answerblockone,
+  div.answerblocktwo {
+    padding-bottom: 0%;
+    padding-top: 0%;
+    margin-bottom: 0%;
+    margin-top: 0%;
+  }
+
+  li {
+    background-color: rgb(198, 216, 191);
+    padding: 4px;
+    margin: 8px;
+    width: 90%;
+    height: 60px;
+  }
+
+  ul {
+    padding: 4% 5%;
+  }
 }
-
-
