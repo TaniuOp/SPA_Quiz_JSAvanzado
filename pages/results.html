@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grafica -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <link rel="stylesheet" href="../styles/style_results.css">
-    <title>Results - Halloween Quiz</title>
+    <title>Results</title>
 </head>
 <body>
-    <h1>Página para mostrar resultado del quiz</h1>
-    <script type="module" src="..//scripts/script.js"></script>
+            <!-- GRAFICA -->
+    <section id="graphicSection">
+        <h2>Quiz Stats</h2>
+        <h3>Your last results!</h3>
+        <div class="ct-chart ct-golden-section" id="chart2"></div>
+    </section>
+    <script type="module" src="../scripts/resultScript.js"></script> 
 </body>
 </html>
+
+
