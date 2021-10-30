@@ -1,10 +1,11 @@
 /* GENERAL STYLES */
 *{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-family: 'Rampart One', cursive;
+    font-size: 25px;
 }
 
 .headerTitle{
-    background-color: #2880c1;
+    background-color: #F2BB3B;
     margin: 0%;
     padding: 0%;
     height: 60px;
@@ -15,16 +16,22 @@ h1{
     color: white;
     margin: 0%;
     padding: 7px;
+    font-size: 45px;
+}
+
+h3{
+    font-size: 35px;
 }
 
 /* QUIZ SECTION */
 /* Main container */
 .mainPage{
     display: block;
-    background: #C2DFEE;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
     width: 100vw;
     min-height: 100vh;
 }
+
 /* To center all the content */
 .divCenterSection{
     display: flex;
@@ -46,6 +53,7 @@ h1{
     align-items: center;
     border-radius: 2%;
     background-color: white;
+    padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
 }
 
@@ -76,11 +84,26 @@ ul{
 }
 /* answer option list*/
 li{
-    background-color: rgb(198, 216, 191);
     padding: 40px;
     margin: 10px;
     width: 30%;
     border-radius: 5px;
+}
+
+li.optionone{
+    background-color: #04AEF1;
+}
+
+li.optiontwo{
+    background-color: #86C093;
+}
+
+li.optionthree{
+    background-color: #d85a5d;
+}
+
+li.optionfour{
+    background-color: rgb(181, 111, 25);
 }
 
 /* Hide radiobutton */
@@ -95,7 +118,8 @@ li{
 }
 
 section.answersSection input[type="radio"]:focus + label {
-    background-color: rgba(97, 176, 176, 0.276);
+    background-color: rgba(12, 12, 12, 0.317);
+    color: white;
 }
 
 /* SUBMIT */
@@ -123,8 +147,17 @@ button:hover {
 /* RESPONSIVE */
 @media screen and (max-width: 1000px){
     h1{
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
+
+    h3, button{
+        font-size: 1em;
+    } 
+
+    label{
+        font-size: 0.8em;
+    }
+
     .questionSection{
         min-height: auto;
     }
@@ -145,16 +178,33 @@ button:hover {
     }
     
     li{
-        background-color: rgb(198, 216, 191);
         padding: 4px;
         margin: 8px;
         width: 90%;
-        height: 60px;
+        height: 80px;
     }
 
     ul{
         padding: 4% 5%;
     }
+
+    .answersSection label{
+        display: inline-block;
+        padding: 30px 20px;
+    }
+
 }
 
+@media screen and (max-width: 750px){
+    h1{
+        font-size: 1em;
+    }
 
+    h3, button{
+        font-size: 0.8em;
+    } 
+
+    label{
+        font-size: 0.5em;
+    }
+}

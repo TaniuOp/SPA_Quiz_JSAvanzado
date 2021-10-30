@@ -1,1 +1,77 @@
-.
+#chart2 {
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+    border-radius: 10px;
+    padding-top: 10px;
+  }
+  
+  #title{
+    color:#d85a5d;
+    margin-bottom: 10px;
+  }
+  
+  h2{
+   color: #04AEF1
+  }
+
+  h3{
+    color: #d85a5d
+  }
+
+  /* he conseguido esto en la documentacion de la grafica. Podemos jugar con ello a ver que puede ayudarnos a customizarla*/
+
+  
+  /* First series a */
+  
+  .ct-series-a .ct-line {
+    stroke: black;
+    stroke-width: 4px;
+  }
+  
+  .ct-series-a .ct-point {
+    stroke: #d85a5d;
+    stroke-width: 14px;
+  }
+  
+  
+  /* Second series b */
+  
+  .ct-series-b .ct-line {
+    stroke: Orange;
+    stroke-width: 4px;
+  }
+  
+  .ct-series-b .ct-point {
+    stroke: #86C093;
+    stroke-width: 14px;
+  }
+  
+  /* Custom Css for the labels */
+  
+  #labels{
+    padding-top:10px;
+    display;block;
+    height: 30px;
+    width: 100%;
+    border-radius:4px;
+    margin-bottom: 10px;
+    background-color: slategrey;
+    text-align:center;
+  }
+  
+  #series-b{
+    float:right;
+  }
+  
+  
+  .label-series-a{
+    stroke:rgb(220, 9, 9);
+    fill:orange;
+    stroke-width: 4px;
+  }
+  
+  .label-series-b{
+    stroke:red;
+    fill:black;
+    stroke-width: 4px;
+  }
+  
