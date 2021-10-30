@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-import { getFirestore, doc, collection, getDoc, getDocs, query } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getFirestore, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
@@ -14,7 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Leemos una colección de Firebase 
-const q = query(collection(db, "ranking"));
+const q = query(collection(db, "user1"));
 let rankingURL;
 let graphicDate=[];
 let graphicPoints=[];
@@ -29,6 +31,23 @@ querySnapshot.forEach((doc) => {
     graphicPoints.push(rankingURL.goodAnswers)
 });
 
+const auth = getAuth();
+const user = auth.currentUser;
+if (user !== null) {
+  // The user object has basic properties such as display name, email, etc.
+  const displayName = user.displayName;
+  const email = user.email;
+  const photoURL = user.photoURL;
+  const emailVerified = user.emailVerified;
+
+  // The user's ID, unique to the Firebase project. Do NOT use
+  // this value to authenticate with your backend server, if
+  // you have one. Use User.getToken() instead.
+  const uid = user.uid;
+}
+
+
+// Metemos los datos a la Grafica 
 const paintRankingGraphic = (dates, points) => {
     let data = {
         labels: points,
