@@ -50,7 +50,7 @@ var getRandomInt = Math.floor(Math.random() * 10);
 console.log(getRandomInt)
 
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
-let questionButton = document.getElementById("nextButton")
+let questionButton = document.getElementById("logo")
 questionButton.addEventListener("click", startData)
 
 async function startData(){
@@ -65,21 +65,6 @@ async function startData(){
 
 //la funcion getQuestionData se llamara con el botón de "Siguiente" y enviará como parametro el numero de la siguiente pregunta 
 //To do: Que el orden de las respuestas sea random para que no quede siempre la correcta en la 4rta 
-
-
-
-await setDoc(doc(db, "Halloween", "User"), {
-    name: "Taniu",
-    goodQuestions: "3",
-    errors: "7"
-});
-// recoger info de interacción y crear variable (para quiz)
-// Firebase QUIZ 
-const q = query(collection(db, "Halloween"));
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data());
-});
 
 
 // LOGIN FIREBASE
@@ -109,6 +94,7 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
     .then((userCredential) => {
         const user = userCredential.user;
         console.log("Creado correctamente")
+        registroToLogin();
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -119,6 +105,8 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
 })
 
 // LOGIN
+let estasLogin = false;
+let enlace = document.getElementById("enlace")
 
 document.getElementById("buttonLogin").addEventListener("click",()=>{
     let email = document.getElementById("lUsuario").value
@@ -126,7 +114,13 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
-        console.log("Login CORRECTO")
+        console.log("Login CORRECTO");
+        cambioLuz();
+        outBoton(); 
+        estasLogin = true;
+        enlace.href = "./pages/question.html";
+        
+
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -136,13 +130,88 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
 })
 
 // SIGN OUT
-
-
 document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
     signOut(auth).then(() => {
-      console.log("Ya NO estas logeado")
+      console.log("Ya NO estas logeado");
+      formDisplay();
+      document.getElementById("rojoverde").src = "./assets/red_login.png";
+
+
     }).catch((error) => {
         console.log("Erroooooor")
     });
 
 })
+
+//CAMBIO DEL COLOR DE LOGIN, Y DESAPARECEN LOS FORMULARIOS CUANDO ESTAS LOGEADO.
+let registroForm = document.getElementById("divRegister");
+let loginForm = document.getElementById("divLogin");
+let loginOut = document.getElementById("out");
+let elLogo = document.getElementById("logo");
+
+let pregunta = document.getElementById("pregunta");
+
+const cambioLuz = () => {
+        document.getElementById("rojoverde").src = "./assets/green_login.png";
+        registroForm.style.display = "none";
+        loginForm.style.display = "none";
+}
+
+const formDisplay = () => {
+    registroForm.style.display = "inherit";
+    loginForm.style.display = "inherit";
+}
+
+
+
+
+// FUNCION DE AVISO SI NO ESTAS LOGEADO NO PUEDES EMPEZAR EL QUIZZ Y TE SALE UN AVISO.
+const aviso = () => {
+    if(estasLogin == false){
+        alert("Porfavor registrate y logeate para iniciar el Quizz");
+    }
+}
+
+
+document.getElementById("logo").addEventListener("click", aviso);  
+
+
+
+
+// BIENVENIDO ES TU PRIMERA VEZ
+
+let si = document.getElementById("si")
+let no = document.getElementById("no")
+
+
+const siLoEs = () => {
+    registroForm.style.display = "inherit";
+    pregunta.style.display = "none";
+    elLogo.style.width = "35vw"
+    elLogo.style.zIndex = "0" 
+}
+
+const noLoEs = () => {
+    loginForm.style.display = "inherit";
+    pregunta.style.display = "none";
+    elLogo.style.width = "35vw"
+    elLogo.style.zIndex = "0" 
+}
+
+
+si.addEventListener("click", siLoEs); 
+no.addEventListener("click", noLoEs);
+
+
+// SI ESTAS LOGIN APARECE EL BOTON LOGIN OUT
+
+const outBoton = () => {
+    loginOut.style.display = "inherit";
+} 
+
+//SI TE REGISTRAS, DESAPARECE EL REGISTRO Y APARECE EL LOGEO
+
+const registroToLogin = () => {
+    registroForm.style.display = "none";
+    loginForm.style.display = "inherit";
+}
