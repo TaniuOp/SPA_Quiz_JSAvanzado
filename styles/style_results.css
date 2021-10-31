@@ -17,6 +17,17 @@
     color: #d85a5d
   }
 
+  .ct-chart{
+    display: flex;
+    height: 200px;
+    width: 200px;
+  }
+  
+  svg.style{
+    height: 200px;
+    width: 200px;
+  }
+
   /* he conseguido esto en la documentacion de la grafica. Podemos jugar con ello a ver que puede ayudarnos a customizarla*/
 
   
