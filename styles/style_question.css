@@ -6,39 +6,47 @@
     box-sizing: border-box;
 
     font-family: 'Rampart One', cursive;
-    font-size: 25px;
+}
+
+body {
+    overflow: hidden;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
 }
 
 .headerTitle{
-    background-color: #F2BB3B;
-    margin: 0%;
-    padding: 0%;
-    height: 60px;
+    display: flex;
+    justify-content: center;
+    /* background-color: #F2BB3B; */
+    align-items: center;
     width: 100vw;
+}
+
+#imagenLogo img{
+    width: 5vw;
 }
 
 h1{
     color: white;
-    margin: 0%;
+    margin-top: 1vh;
     padding: 7px;
-    font-size: 45px;
+    font-size: 5rem;
 }
 
 h3{
-    font-size: 35px;
+    font-size: 2rem;
 }
 
 /* QUIZ SECTION */
 /* Main container */
 .mainPage{
     display: block;
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
     width: 100vw;
     min-height: 100vh;
 }
 
 /* To center all the content */
 .divCenterSection{
+    height: 90vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,22 +57,21 @@ h3{
 
 /* SPA - QUESTION */
 .quizSection{
-    width: 90%;
-    height: 70%;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border-radius: 2%;
+    border-radius: 15px;
     background-color: white;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+    margin-top: 1vh;
 }
 
 .questionSection{
     width: 90%;
-    min-height: 200px;
     display: flex;
     justify-content: center;
 }
@@ -73,6 +80,8 @@ h3{
 .answersSection{
     width: 90%;
     min-height: 450px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* blocks to align answers */
@@ -89,16 +98,15 @@ ul{
 }
 /* answer option list*/
 li{
-    padding: 40px;
     margin: 10px;
-    width: 30%;
+    width: 20vw;
+    height: 12vh;
     border-radius: 5px;
 }
 
-li.optionone{  
-    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+li#optionone{  
+    background-image: linear-gradient(to right, #1FA2FF 0%, #5cdff6  51%, #1FA2FF  100%);
     margin: 10px;
-    padding: 15px 45px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -106,25 +114,86 @@ li.optionone{
     color: white;            
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
-    display: block;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
 }
 
-.btn-grad:hover {
+
+
+li#optionone:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
-li.optiontwo{
-    background-color: #86C093;
+li#optiontwo{
+    background-image: linear-gradient(to right, #52c234 0%, #248600  51%, #52c234  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;    
+
 }
 
-li.optionthree{
-    background-color: #d85a5d;
+#optiontwo:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
-li.optionfour{
-    background-color: rgb(181, 111, 25);
+li#optionthree{
+    background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    font-size: 1.2rem;    
+
+}
+
+li#optionthree:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+li#optionfour{
+    background-image: linear-gradient(to right, #ffa426 0%, #fdd763  51%, #ffb347  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;    
+
+}
+li#optionfour:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Hide radiobutton */
@@ -191,12 +260,12 @@ button:hover {
         max-height: 30px;
     }
 
-    div.answerblockone, div.answerblocktwo{
+    /* div.answerblockone, div.answerblocktwo{
         padding-bottom: 0%;
         padding-top: 0%;
         margin-bottom: 0%;
         margin-top: 0%;
-    }
+    } */
     
     li{
         padding: 4px;
@@ -233,14 +302,43 @@ button:hover {
 
 
 li p {
-    width: 100%;
+    color: black;
+    font-weight: bold;    
 }
 
 #submitSection {
-    width: 100px;
-    background-color: #2880c1;
+    width: 8vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     border-radius: 4px;
-    padding: 10px;
     align-self: center;
+    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: none;    
 }
+
+#submitSection:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+#submitSection p {
+    font-size: 2rem;
+}
+
+#fin {
+    display: none;
+}
+

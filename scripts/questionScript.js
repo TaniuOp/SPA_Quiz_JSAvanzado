@@ -49,13 +49,14 @@ const getQuestionData = async (questionNumber) => {
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
 const questionDiv =  document.getElementsByClassName("questionSection")[0];//obtenemos sección donde ira la pregunta  
 let questionButton = document.getElementById("submitSection")
-questionButton.addEventListener("click", ()=> {
+
+// AL PULSAR EL BOTON NEXT SE EJECUTAN VARIAS FUNCIONES
+questionButton.addEventListener("click", ()=> {    
     startData();
     validaCorrecta();
-    botonDesaparece();    
+    botonDesaparece();
+    limite();    
 }) 
-// questionButton.addEventListener("click", getRandomNum)
-//Añadimos las funciones a llamar desde el boton de NEXT
 
 //Generamos un num random para pasarle a la pregunta (del 1 al 10)
 let getRandomInt
@@ -78,6 +79,12 @@ let respuesta2 = document.getElementById(`answer2`);
 let respuesta3 = document.getElementById(`answer3`);
 let respuesta4 = document.getElementById(`answer4`);
 
+// Declaro las cajas de las respuestas
+const bloque1 = document.getElementById("optionone")
+const bloque2 = document.getElementById("optiontwo")
+const bloque3 = document.getElementById("optionthree")
+const bloque4 = document.getElementById("optionfour")
+
 
 async function startData(){
     await getQuestions() 
@@ -91,8 +98,7 @@ async function startData(){
 
  await startData()
 
-//  VALIDACION SELECCION DE RESPUESTA
-
+//  VALIDACION SELECCION DE RESPUESTA QUE ESTABLECE EL BOOLEANO CON CADA RESPUESTA SELECCIONADA
 let correcta = null;
 
 const esCorrecta = (p) => {
@@ -102,28 +108,16 @@ const esCorrecta = (p) => {
         correcta = false;
     }
     console.log(correcta);
-    console.log(p);
-
 }
 
-respuesta1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece()});
-respuesta2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece()});
-respuesta3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece()});
-respuesta4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece()});
+bloque1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece(), borderColor(optionone)});
+bloque2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece(), borderColor(optiontwo)});
+bloque3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece(), borderColor(optionthree)});
+bloque4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece(), borderColor(optionfour)});
 
-// VALIDACION RESPUESTA CORRECTA Y PUNTUACION
+// AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
 let puntuacion = 0;
 let preguntasCompletadas = 0
-
-
-const botonDesaparece = () => {
-    if(correcta === null) {
-        document.getElementById("submitSection").style.display = "none"; 
-    }else{
-        document.getElementById("submitSection").style.display = "inherit"; 
-    }
-}
-botonDesaparece();
 
 const validaCorrecta =  () => {
     if(correcta == true) {
@@ -132,20 +126,44 @@ const validaCorrecta =  () => {
     } else {
         alert("LO SIENTO!!! RESPUESTA ERRONEA!!!")
     }
-    console.log("ESTE ES EL ESTADO DE CORRECTA     " + correcta)
-    preguntasCompletadas++;
+    console.log("El estado de correcta es---> " + correcta)
     correcta = null;
-    console.log(puntuacion);
-    console.log(preguntasCompletadas);
+    preguntasCompletadas++;
+    console.log(`NUMERO DE PREGUNTAS COMPLETADAS: ${preguntasCompletadas}`);
+    console.log(`Esta es tu PUNTUACION --> ${puntuacion}`);
+}
+
+// FUNCION PARA HACER DESAPARECER EL BOTON DE NEXT SI NO SE HA SELECCIONADO RESPUESTA Y PARA QUE NO CONSERVE LA SELECCION EN LA SIGUIENTE PREGUNTA
+const botonDesaparece = () => {
+    if(correcta === null) {
+        document.getElementById("submitSection").style.display = "none"; 
+    }else{
+        document.getElementById("submitSection").style.display = "inherit"; 
+    }
+    bloque1.style.border = "none";
+    bloque2.style.border = "none";
+    bloque3.style.border = "none";
+    bloque4.style.border = "none";  
+}
+botonDesaparece();
+
+const borderColor = (n) => {
+    bloque1.style.border = "none";
+    bloque2.style.border = "none";
+    bloque3.style.border = "none";
+    bloque4.style.border = "none";
+    n.style.border = "6px solid black";
+}
+
+// LIMITE 10 PREGUNTAS, a la 10 redirigue a resultados.
+const limite = () => {
+    if(preguntasCompletadas == 10) {
+        window.location.replace("../pages/results.html");
+    }
 }
 
 
-// LIMITE 10 PREGUNTAS en desarrollo ^^
-// const enlace = "<a href="./resultScript.js">"
 
-// const limite = () => {
-//     if(preguntasCompletadas = 10) {
-//         document.getElementById("submitSection").appendChild(<a href="#">);
-//     }
-// }
+
+
 
