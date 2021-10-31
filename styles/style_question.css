@@ -1,5 +1,10 @@
 /* GENERAL STYLES */
 *{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+
     font-family: 'Rampart One', cursive;
     font-size: 25px;
 }
@@ -90,8 +95,24 @@ li{
     border-radius: 5px;
 }
 
-li.optionone{
-    background-color: #04AEF1;
+li.optionone{  
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;    
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 li.optiontwo{
