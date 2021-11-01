@@ -66,7 +66,6 @@ const random4 = ()=>{
 }
 random4()
 
-
 // REDECLARO EL VALOR DE LAS RESPUESTAS PARA QUE SIGAN PINTANDOSE DE FORMA ALEATORIA CON EL NEXT
 const redeclararRespuestas = () =>{
     respuesta1 = document.getElementById(`answer${arrayRandom[0]}`);
