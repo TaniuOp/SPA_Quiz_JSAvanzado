@@ -8,6 +8,10 @@
     font-family: 'Rampart One', cursive;
 }
 
+p{
+    cursor: pointer;
+}
+
 body {
     overflow: hidden;
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
@@ -23,7 +27,23 @@ body {
 
 #imagenLogo img{
     width: 5vw;
+    animation: flotar 6s ease infinite normal;
+
 }
+
+@keyframes flotar {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+
 
 h1{
     color: white;
@@ -104,7 +124,7 @@ li{
     border-radius: 5px;
 }
 
-li#optionone{  
+li#option1{  
     background-image: linear-gradient(to right, #1FA2FF 0%, #5cdff6  51%, #1FA2FF  100%);
     margin: 10px;
     text-align: center;
@@ -118,17 +138,18 @@ li#optionone{
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 
 
-li#optionone:hover {
+li#option1:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
-li#optiontwo{
+li#option2{
     background-image: linear-gradient(to right, #52c234 0%, #248600  51%, #52c234  100%);
     margin: 10px;
     text-align: center;
@@ -141,17 +162,18 @@ li#optiontwo{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
 
-#optiontwo:hover {
+#option2:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
-li#optionthree{
+li#option3{
     background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
     margin: 10px;
     text-align: center;
@@ -164,17 +186,18 @@ li#optionthree{
     display: flex;
     justify-content: center;
     align-items: center;    
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
 
-li#optionthree:hover {
+li#option3:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
-li#optionfour{
+li#option4{
     background-image: linear-gradient(to right, #ffa426 0%, #fdd763  51%, #ffb347  100%);
     margin: 10px;
     text-align: center;
@@ -187,10 +210,11 @@ li#optionfour{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
-li#optionfour:hover {
+li#option4:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
