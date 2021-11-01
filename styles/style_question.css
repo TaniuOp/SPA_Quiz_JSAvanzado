@@ -8,6 +8,10 @@
     font-family: 'Rampart One', cursive;
 }
 
+p{
+    cursor: pointer;
+}
+
 body {
     overflow: hidden;
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
@@ -134,6 +138,7 @@ li#option1{
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 
@@ -157,7 +162,8 @@ li#option2{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
 
@@ -180,7 +186,8 @@ li#option3{
     display: flex;
     justify-content: center;
     align-items: center;    
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
 
@@ -203,7 +210,8 @@ li#option4{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;    
+    font-size: 1.2rem;   
+    cursor: pointer; 
 
 }
 li#option4:hover {
