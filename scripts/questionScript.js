@@ -51,7 +51,7 @@ const questionDiv =  document.getElementsByClassName("questionSection")[0];//obt
 let questionButton = document.getElementById("submitSection")
 
 //ALEATORIZACION DE LA POSICION DE LAS RESPUESTAS
-let arrayRandom =  []
+let arrayRandom = [];
 
 const random4 = ()=>{
   let elNumero
@@ -61,19 +61,36 @@ const random4 = ()=>{
       arrayRandom.push(elNumero);
     }
   }
-}
+  console.log(arrayRandom)
 
+}
 random4()
 
-console.log(arrayRandom)
+const borrar = () => {
+    arrayRandom = [];
+}
+
+// REDECLARO EL VALOR DE LAS RESPUESTAS PARA QUE SIGAN PINTANDOSE DE FORMA ALEATORIA
+
+const redeclararRespuestas = () =>{
+    respuesta1 = document.getElementById(`answer${arrayRandom[0]}`);
+    respuesta2 = document.getElementById(`answer${arrayRandom[1]}`);
+    respuesta3 = document.getElementById(`answer${arrayRandom[2]}`);
+    respuesta4 = document.getElementById(`answer${arrayRandom[3]}`);
+}
 
 
 // AL PULSAR EL BOTON NEXT SE EJECUTAN VARIAS FUNCIONES
-questionButton.addEventListener("click", ()=> {    
+//la funcion startData enviará como parametro en getQuestionData el numero de la siguiente pregunta.
+
+questionButton.addEventListener("click", ()=> {
+    borrar();    
+    random4();
+    redeclararRespuestas();
     startData();
     validaCorrecta();
     botonDesaparece();
-    limite();    
+    limite();
 }) 
 
 //Generamos un num random para pasarle a la pregunta (del 1 al 10)
@@ -89,21 +106,21 @@ let randomNumber = (max) => {
 }
 
 
-//la funcion startData se llamara con el botón de "Siguiente" y enviará como parametro en getQuestionData el numero de la siguiente pregunta 
 //DECLARAMOS CADA UNO DE LOS ELEMENTOS DEL DOM.
 let pregunta = document.getElementById("questionText");
-let respuesta1 = document.getElementById(`answer1`);
-let respuesta2 = document.getElementById(`answer2`);
-let respuesta3 = document.getElementById(`answer3`);
-let respuesta4 = document.getElementById(`answer4`);
+let respuesta1 = document.getElementById(`answer${arrayRandom[0]}`);
+let respuesta2 = document.getElementById(`answer${arrayRandom[1]}`);
+let respuesta3 = document.getElementById(`answer${arrayRandom[2]}`);
+let respuesta4 = document.getElementById(`answer${arrayRandom[3]}`);
+
 
 // Declaro las cajas de las respuestas
-const bloque1 = document.getElementById("option1")
-const bloque2 = document.getElementById("option2")
-const bloque3 = document.getElementById("option3")
-const bloque4 = document.getElementById("option4")
+let bloque1 = document.getElementById(`option1`)
+let bloque2 = document.getElementById(`option2`)
+let bloque3 = document.getElementById(`option3`)
+let bloque4 = document.getElementById(`option4`)
 
-
+// INICIAMOS LA ESCRITURA DEL DOM CON LOS DATOS DE LA API
 async function startData(){
     await getQuestions() 
     await getQuestionData(getRandomInt) 
@@ -112,9 +129,10 @@ async function startData(){
     respuesta2.innerHTML = await myBadAnswers[1];
     respuesta3.innerHTML = await myBadAnswers[2];
     respuesta4.innerHTML = await myGoodAnswer;
+    console.log(`La respuesta correcta es---->   ${myGoodAnswer}`);
 }
 
- await startData()
+await startData()
 
 //  VALIDACION SELECCION DE RESPUESTA QUE ESTABLECE EL BOOLEANO CON CADA RESPUESTA SELECCIONADA
 let correcta = null;
@@ -128,12 +146,16 @@ const esCorrecta = (p) => {
     console.log(correcta);
 }
 
-bloque1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece(), borderColor(option1)});
-bloque2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece(), borderColor(option2)});
-bloque3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece(), borderColor(option3)});
-bloque4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece(), borderColor(option4)});
 
-// AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
+bloque1.addEventListener("click", ()=>{/*esCorrecta(respuesta1.textContent),*/ botonDesaparece(), borderColor(option1)});
+bloque2.addEventListener("click", ()=>{/*esCorrecta(respuesta2.textContent),*/ botonDesaparece(), borderColor(option2)});
+bloque3.addEventListener("click", ()=>{/*esCorrecta(respuesta3.textContent),*/ botonDesaparece(), borderColor(option3)});
+bloque4.addEventListener("click", ()=>{/*esCorrecta(respuesta4.textContent),*/ botonDesaparece(), borderColor(option4)});
+
+
+
+
+    // AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
 let puntuacion = 0;
 let preguntasCompletadas = 0
 
@@ -144,12 +166,16 @@ const validaCorrecta =  () => {
     } else {
         alert("LO SIENTO!!! RESPUESTA ERRONEA!!!")
     }
-    console.log("El estado de correcta es---> " + correcta)
+    console.log("El estado de correcta es---> " + correcta);
+
     correcta = null;
     preguntasCompletadas++;
+
+
     console.log(`NUMERO DE PREGUNTAS COMPLETADAS: ${preguntasCompletadas}`);
     console.log(`Esta es tu PUNTUACION --> ${puntuacion}`);
 }
+
 
 // FUNCION PARA HACER DESAPARECER EL BOTON DE NEXT SI NO SE HA SELECCIONADO RESPUESTA Y PARA QUE NO CONSERVE LA SELECCION EN LA SIGUIENTE PREGUNTA
 const botonDesaparece = () => {
