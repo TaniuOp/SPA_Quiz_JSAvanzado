@@ -1,6 +1,11 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-import { getFirestore, doc, collection, getDoc, getDocs, query } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+// FIREBASE - FIRESTORE para guardar puntuacion de usuario asociado al user UID
 
+//Inicializamos Firebase 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { collection, getFirestore, getDocs, query} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+// Datos de nuestro proyecto 
 const firebaseConfig = {
     apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
     authDomain: "quizztaniuruben.firebaseapp.com",
@@ -12,32 +17,61 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth();
 
-// Leemos una colección de Firebase 
-const q = query(collection(db, "ranking"));
-let rankingURL;
-let graphicDate=[];
-let graphicPoints=[];
 
-const querySnapshot = await getDocs(q);
+let points = [];
+let dates= [];
+// Leemos la colección completa para obtener datos que meteremos en grafica 
 
-querySnapshot.forEach((doc) => {
-//   console.log(doc.id, " => ", doc.data());
-    rankingURL = doc.data()
-    console.log(rankingURL)
-    graphicDate.push(rankingURL.date)
-    graphicPoints.push(rankingURL.goodAnswers)
+onAuthStateChanged(auth, async (user) => {
+if (user) {
+  let userUid = user.uid;
+  console.log("Current User UID:" + userUid);
+
+  const getCollection = collection(db, 'halloween_quiz', userUid, "attempts");
+  console.log(getCollection)
+  
+// Metemos la data de Firebase en un Array que podamos usar en la grafica 
+  const querySnapshot = await getDocs(getCollection);
+  console.log(querySnapshot)
+
+  querySnapshot.forEach((doc) => {
+    points.push(doc.data().goodAnswers)
+    dates.push(doc.data().date.toString())
+  });
+  console.log(points, dates)
+  paintRankingGraphic(dates, points)
+
+  //Obtenemos la media de todos los quiz 
+    let sum = points.reduce((previous, current) => current += previous);
+    let avg = sum / points.length;
+    console.log(avg)
+    let getMoreInfoSection = document.getElementById("moreInfo")
+    getMoreInfoSection.innerHTML = "Your current media is " + avg + " points"
+
+
+  // Ultima jugada 
+  let lastResults = document.getElementById("myLastResult")
+  lastResults.innerText = points[points.length - 1] +"/10"
+} 
+else {
+  alert("You need to be logged in to play!");
+  location.href = "/index.html";
+}
 });
 
+// // Metemos los datos a la Grafica 
 const paintRankingGraphic = (dates, points) => {
     let data = {
-        labels: points,
-        series: [dates]
+        labels: dates,
+        series: [points]
     };
 
+// Responsive de las lineas de la gráfica 
 let options = {
-    seriesBarDistance: 10
-  };
+    seriesBarDistance: 15,
+   };
   
   let responsiveOptions = [
     ['screen and (max-width: 640px)', {
@@ -51,7 +85,7 @@ let options = {
   ];
   new Chartist.Line('#chart2', data, options, responsiveOptions); 
 }
-paintRankingGraphic(graphicDate, graphicPoints)
-console.log(graphicDate, graphicPoints)
+
+
 
 
