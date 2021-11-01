@@ -52,11 +52,8 @@ if (user) {
 
 
   // Ultima jugada 
-
-  // .collection("attempts")
-  // .orderBy("", "asc")
   let lastResults = document.getElementById("myLastResult")
-  lastResults.innerText = points[0] +"/10"
+  lastResults.innerText = points[points.length - 1] +"/10"
 } 
 else {
   alert("You need to be logged in to play!");

@@ -94,7 +94,7 @@ const formDisplay = () => {
 // FUNCION DE AVISO SI NO ESTAS LOGEADO NO PUEDES EMPEZAR EL QUIZZ Y TE SALE UN AVISO.
 const aviso = () => {
     if(estasLogin == false){
-        alert("Porfavor registrate y logeate para iniciar el Quizz");
+        alert("You need to be logged in to start playing");
     }
 }
 

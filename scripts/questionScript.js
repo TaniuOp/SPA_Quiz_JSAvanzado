@@ -3,7 +3,7 @@
 //Inicializamos Firebase 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-import { collection, getFirestore, setDoc, addDoc, doc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { collection, getFirestore, addDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
 
 // Datos de nuestro proyecto 
@@ -202,13 +202,15 @@ const borderColor = (n) => {
 let quizDate = new Date().toLocaleDateString()
 console.log(quizDate)
 
+var quizExactTime = new Date()
+
 // LIMITE 10 PREGUNTAS, a la 10 redirigue a resultados.
 const limite = async() => {
-    if(preguntasCompletadas === 3) {
+    if(preguntasCompletadas === 4) {
      let setFirebase = await addDoc(collection(db, 'halloween_quiz', auth.currentUser.uid, "attempts"), {
      goodAnswers: puntuacion,
      date: quizDate,
-    // created: Timestamp
+     createdAt: quizExactTime
     })
     window.location.replace("../pages/results.html")
     }
