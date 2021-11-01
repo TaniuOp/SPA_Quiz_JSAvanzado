@@ -1,3 +1,44 @@
+// FIREBASE - FIRESTORE para guardar puntuacion de usuario asociado al user UID
+
+//Inicializamos Firebase 
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { collection, getFirestore, setDoc, addDoc, doc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+// Datos de nuestro proyecto 
+const firebaseConfig = {
+    apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
+    authDomain: "quizztaniuruben.firebaseapp.com",
+    projectId: "quizztaniuruben",
+    storageBucket: "quizztaniuruben.appspot.com",
+    messagingSenderId: "692644756869",
+    appId: "1:692644756869:web:be9d16807787b8e5df98ec"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Obtenemos la info del usuario logeado para crear la colección con su ID
+//using onAuthStateChanged() to set an observer you "ensure that the Auth object isn't in an intermediate state—such as initialization—when you get the current user"
+
+const auth = getAuth();
+let userUid 
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userUid = user.uid;
+    console.log("Current User UID:" + userUid);
+    // setUserUid(userUid);
+    return userUid
+  } else {
+    window.alert("You need to be logged in to play!");
+    location.href = "/index.html";
+  }
+});
+
+// PREGUNTAS 
+
 let allData={} // variable donde meteremos el objeto 
 
 // Obtenemos las preguntas de la API 
@@ -49,13 +90,15 @@ const getQuestionData = async (questionNumber) => {
 //Iniciamos todas las funciones  anteriormente declaradas y obtenemos los elementos del HTML donde queremos reemplazar el texto de las preguntas obtenidas de la API 
 const questionDiv =  document.getElementsByClassName("questionSection")[0];//obtenemos sección donde ira la pregunta  
 let questionButton = document.getElementById("submitSection")
-questionButton.addEventListener("click", ()=> {
+
+// AL PULSAR EL BOTON NEXT SE EJECUTAN VARIAS FUNCIONES
+ questionButton.addEventListener("click", async ()=> {    
     startData();
     validaCorrecta();
-    botonDesaparece();    
+    botonDesaparece();
+    await limite().then(data => data);    
+    console.log("CURRENT: "+auth.currentUser.uid)
 }) 
-// questionButton.addEventListener("click", getRandomNum)
-//Añadimos las funciones a llamar desde el boton de NEXT
 
 //Generamos un num random para pasarle a la pregunta (del 1 al 10)
 let getRandomInt
@@ -78,6 +121,12 @@ let respuesta2 = document.getElementById(`answer2`);
 let respuesta3 = document.getElementById(`answer3`);
 let respuesta4 = document.getElementById(`answer4`);
 
+// Declaro las cajas de las respuestas
+const bloque1 = document.getElementById("optionone")
+const bloque2 = document.getElementById("optiontwo")
+const bloque3 = document.getElementById("optionthree")
+const bloque4 = document.getElementById("optionfour")
+
 
 async function startData(){
     await getQuestions() 
@@ -92,8 +141,7 @@ async function startData(){
 
  await startData()
 
-//  VALIDACION SELECCION DE RESPUESTA
-
+//  VALIDACION SELECCION DE RESPUESTA QUE ESTABLECE EL BOOLEANO CON CADA RESPUESTA SELECCIONADA
 let correcta = null;
 
 const esCorrecta = (p) => {
@@ -103,136 +151,67 @@ const esCorrecta = (p) => {
         correcta = false;
     }
     console.log(correcta);
-    console.log(p);
-
 }
 
-respuesta1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece()});
-respuesta2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece()});
-respuesta3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece()});
-respuesta4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece()});
+bloque1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece(), borderColor(optionone)});
+bloque2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece(), borderColor(optiontwo)});
+bloque3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece(), borderColor(optionthree)});
+bloque4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece(), borderColor(optionfour)});
 
-// VALIDACION RESPUESTA CORRECTA Y PUNTUACION
+// AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
 let puntuacion = 0;
 let preguntasCompletadas = 0
 
+const validaCorrecta =  () => {
+    if(correcta == true) {
+        alert("GOOD ONE! You have win +1 point!!!");
+        puntuacion++
+    } else {
+        alert("SORRY. Not this time :(!!!")
+    }
+    console.log("El estado de correcta es---> " + correcta)
+    correcta = null;
+    preguntasCompletadas++;
+    console.log(`Completed questions: ${preguntasCompletadas}`);
+    console.log(`User Score: --> ${puntuacion}`);
+}
 
+// FUNCION PARA HACER DESAPARECER EL BOTON DE NEXT SI NO SE HA SELECCIONADO RESPUESTA Y PARA QUE NO CONSERVE LA SELECCION EN LA SIGUIENTE PREGUNTA
 const botonDesaparece = () => {
     if(correcta === null) {
         document.getElementById("submitSection").style.display = "none"; 
     }else{
         document.getElementById("submitSection").style.display = "inherit"; 
     }
+    bloque1.style.border = "none";
+    bloque2.style.border = "none";
+    bloque3.style.border = "none";
+    bloque4.style.border = "none";  
 }
 botonDesaparece();
 
-const validaCorrecta =  () => {
-    if(correcta == true) {
-        alert("GOOD ONE! You have win +1 point");
-        puntuacion++
-    } else {
-        alert("SORRY. Not this time :( ")
+const borderColor = (n) => {
+    bloque1.style.border = "none";
+    bloque2.style.border = "none";
+    bloque3.style.border = "none";
+    bloque4.style.border = "none";
+    n.style.border = "6px solid black";
+}
+
+//Obtenemos el día de hoy 
+let quizDate = new Date().toLocaleDateString()
+console.log(quizDate)
+
+// LIMITE 10 PREGUNTAS, a la 10 redirigue a resultados.
+const limite = async() => {
+    if(preguntasCompletadas === 3) {
+     let setFirebase = await addDoc(collection(db, 'halloween_quiz', auth.currentUser.uid, "attempts"), {
+     goodAnswers: puntuacion,
+     date: quizDate,
+    // created: Timestamp
+    })
+    window.location.replace("../pages/results.html")
     }
-    console.log("ESTE ES EL ESTADO DE CORRECTA     " + correcta)
-    preguntasCompletadas++;
-    correcta = null;
-    console.log(puntuacion);
-    console.log(preguntasCompletadas);
-}
+    }
 
 
-// LIMITE 10 PREGUNTAS en desarrollo ^^
-// const enlace = "<a href="./resultScript.js">"
-
-// const limite = () => {
-//     if(preguntasCompletadas = 10) {
-//         document.getElementById("submitSection").appendChild(<a href="#">);
-//     }
-// }
-
-
-
-
-//Enviar datos al Firebase 
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-import { getFirestore, setDoc, doc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
-    authDomain: "quizztaniuruben.firebaseapp.com",
-    projectId: "quizztaniuruben",
-    storageBucket: "quizztaniuruben.appspot.com",
-    messagingSenderId: "692644756869",
-    appId: "1:692644756869:web:be9d16807787b8e5df98ec"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Obtenemos la info del usuario logeado para crear la colección con su ID
-
-const auth = getAuth();
-
-//using onAuthStateChanged() to set an observer you "ensure that the Auth object isn't in an intermediate state—such as initialization—when you get the current user"
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const userUid = user.uid;
-    // const userMail = user.email;
-    // console.log(userUid, userMail)
-    setUserUid(userUid);
-  } else {
-    window.alert("You need to be logged in to play!");
-    location.href = "/index.html";
-  }
-});
-
-// Si es la primra vez que se hace quiz se setea al usuario sino se guarda mas datos en el userUid
-
-if ( ){
-    await setDoc(doc(db, "userUid", "attempt4"), {
-  goodAnswers: 3,
-  date: 10,
-});
-}
-
-
-// la siguiente vez que hace quiz 
-let currentUserUid 
-let setUserUid = (userUid) => {
-    let currentUserUid = userUid
-    console.log("user UID: " + userUid)
-    setDoc(doc(db, userUid), {
-        goodAnswers: 3,
-        date: 10,
-      });
-}
-
-// Enviamos las respuestas correctas al UID del user 
-
-
-  //Falta poner el UID dinamico del usuario 
-
-
-
-
-// const cityRef = doc(db, 'cities', 'BJ');
-//     setDoc(cityRef, { capital: true }, { merge: true });
-
-// const docData = {
-//     stringExample: "Hello world!",
-//     booleanExample: true,
-//     numberExample: 3.14159265,
-//     dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
-//     arrayExample: [5, true, "hello"],
-//     nullExample: null,
-//     objectExample: {
-//         a: 5,
-//         b: {
-//             nested: "foo"
-//         }
-//     }
-// };
-// await setDoc(doc(db, "data", "one"), docData);

@@ -7,10 +7,17 @@
     <link rel="stylesheet" href="../styles/style_question.css">
     <link rel="icon" type="image/png" href="../assets/favicon_logo.png">
     <title>Questions - Halloween Quiz</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="headerTitle">
-        <h1>SPA. Halloween Quiz</h1>
+        <div id="imagenLogo">
+            <img src="../assets/logo.png" alt="Logo de la pagina">
+        </div>
+        <h1>Halloween Quiz</h1>
     </div>
     <main class="mainPage">
         <div class="divCenterSection">
@@ -21,30 +28,31 @@
             <section class="answersSection">
                     <ul>
                         <div class="answerblockone">
-                        <li class="optionone">
+                        <li id="optionone">
                             <p id="answer1"></p>
                         </li>
-                        <li class="optiontwo">
+                        <li id="optiontwo">
                             <p id="answer2"></p>
                         </li>
                         </div>                
                         <div class="answerblocktwo">
-                        <li class="optionthree">
+                        <li id="optionthree">
                             <p id="answer3" ></p>
                         </li>
-                        <li class="optionfour">
+                        <li id="optionfour">
                             <p id="answer4"></p>
                         </li>
                         </div>
                     </ul>
+                    <div id="submitSection">
+                        <p>Next</p>
+                        <a id="fin" href='../results.html'></a>     
+                    </div>
             </section>
-            <div id="submitSection">
-                <p>Next</p>     
-            </div>
         </section>
         </div>
     </main>
-    <script type="module" src="..//scripts/questionScript.js"></script>
+    <script type="module" src="../scripts/questionScript.js"></script>
 </html>
 
 

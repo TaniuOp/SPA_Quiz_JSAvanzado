@@ -1,8 +1,11 @@
+// FIREBASE - FIRESTORE para guardar puntuacion de usuario asociado al user UID
+
+//Inicializamos Firebase 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-import { getFirestore, collection, getDocs, getDoc, doc, query } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+import { collection, getFirestore, getDocs, query} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
 
-
+// Datos de nuestro proyecto 
 const firebaseConfig = {
     apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
     authDomain: "quizztaniuruben.firebaseapp.com",
@@ -14,50 +17,63 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-
-// // Obtén el perfil de un usuario
 const auth = getAuth();
-const user = auth.currentUser;
-if (user !== null) {
-  // The user object has basic properties such as display name, email, etc.
-  const uid = user.uid;
-  console.log("user UID: " + uid)
-}
 
-// Leemos registro de ultima partida (actual) 
-const docRefs = doc(db, "userUid", "attempt4");
-const docSnap = await getDoc(docRefs);
-if (docSnap.exists()) {
-  console.log("Current Score:", docSnap.data());
-} else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
-}
 
+let points = [];
+let dates= [];
 // Leemos la colección completa para obtener datos que meteremos en grafica 
 
-const q = query(collection(db, "userUid"));
+onAuthStateChanged(auth, async (user) => {
+if (user) {
+  let userUid = user.uid;
+  console.log("Current User UID:" + userUid);
 
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data());
+  const getCollection = collection(db, 'halloween_quiz', userUid, "attempts");
+  console.log(getCollection)
+  
+// Metemos la data de Firebase en un Array que podamos usar en la grafica 
+  const querySnapshot = await getDocs(getCollection);
+  console.log(querySnapshot)
+
+  querySnapshot.forEach((doc) => {
+    points.push(doc.data().goodAnswers)
+    dates.push(doc.data().date.toString())
+  });
+  console.log(points, dates)
+  paintRankingGraphic(dates, points)
+
+  //Obtenemos la media de todos los quiz 
+    let sum = points.reduce((previous, current) => current += previous);
+    let avg = sum / points.length;
+    console.log(avg)
+    let getMoreInfoSection = document.getElementById("moreInfo")
+    getMoreInfoSection.innerHTML = "Your current media is " + avg + " points"
+
+
+  // Ultima jugada 
+
+  // .collection("attempts")
+  // .orderBy("", "asc")
+  let lastResults = document.getElementById("myLastResult")
+  lastResults.innerText = points[0] +"/10"
+} 
+else {
+  alert("You need to be logged in to play!");
+  location.href = "/index.html";
+}
 });
 
-
-// Metemos la data de Firebase en un Array que podamos usar en la grafica 
-
-// Metemos los datos a la Grafica 
+// // Metemos los datos a la Grafica 
 const paintRankingGraphic = (dates, points) => {
     let data = {
-        labels: points,
-        series: [dates]
+        labels: dates,
+        series: [points]
     };
 
+// Responsive de las lineas de la gráfica 
 let options = {
     seriesBarDistance: 15,
-      width: 450,
-      height: 250,
    };
   
   let responsiveOptions = [
@@ -72,7 +88,7 @@ let options = {
   ];
   new Chartist.Line('#chart2', data, options, responsiveOptions); 
 }
-paintRankingGraphic(graphicDate, graphicPoints)
-console.log(graphicDate, graphicPoints)
+
+
 
 

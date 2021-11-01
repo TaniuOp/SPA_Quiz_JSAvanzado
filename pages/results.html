@@ -9,15 +9,39 @@
     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/style_results.css">
+    <link rel="icon" type="image/png" href="../assets/favicon_logo.png">
+
     <title>Results</title>
 </head>
+
 <body>
-            <!-- GRAFICA -->
+    <div class="headerTitle">
+        <div id="imagenLogo">
+            <img src="../assets/logo.png" alt="Logo de la pagina">         
+        </div>
+        <h1>Halloween Quiz</h1>
+    </div>
+    <!-- GRAFICA -->
     <section id="graphicSection">
-        <h2>Quiz Stats</h2>
-        <h3>Your last results!</h3>
+        <h2>Your last game stadistics</h2>
         <div class="ct-chart ct-golden-section" id="chart2"></div>
+    </section>
+
+    <section id="moreInfo"></section><br><br>
+
+    <h3>Your last result is:</h3>
+    <p id="myLastResult"> </p>
+    <br>    
+    <h3>Play again:</h3>
+    <section id="playAgain">
+        <a href="./question.html">
+            <img id="enlace" src="../assets/logo.png" alt="Start again">
+        </a>
     </section>
     <script type="module" src="../scripts/resultScript.js"></script> 
 </body>
