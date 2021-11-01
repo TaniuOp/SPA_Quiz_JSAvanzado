@@ -28,7 +28,7 @@ document.getElementById("buttonSubmit").addEventListener("click",()=>{
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode + errorMessage)
+        alert(errorCode + errorMessage)
     });
     
 })
@@ -54,20 +54,20 @@ document.getElementById("buttonLogin").addEventListener("click",()=>{
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode + errorMessage)
+        alert(errorCode + errorMessage)
     });
 })
 
 // SIGN OUT
 document.getElementById("buttonLoginOut").addEventListener("click", ()=>{
     signOut(auth).then(() => {
-      console.log("Ya NO estas logeado");
+      console.log("User loged out! Bye");
       formDisplay();
       document.getElementById("rojoverde").src = "./assets/red_login.png";
 
 
     }).catch((error) => {
-        console.log("Erroooooor")
+        console.log("We had some error")
     });
 
 })
@@ -84,6 +84,7 @@ const cambioLuz = () => {
         document.getElementById("rojoverde").src = "./assets/green_login.png";
         registroForm.style.display = "none";
         loginForm.style.display = "none";
+        document.getElementById("startPlaying").textContent = "Start playing"
 }
 
 const formDisplay = () => {
@@ -93,7 +94,7 @@ const formDisplay = () => {
 // FUNCION DE AVISO SI NO ESTAS LOGEADO NO PUEDES EMPEZAR EL QUIZZ Y TE SALE UN AVISO.
 const aviso = () => {
     if(estasLogin == false){
-        alert("Porfavor registrate y logeate para iniciar el Quizz");
+        alert("You need to be logged in to start playing");
     }
 }
 
@@ -130,3 +131,5 @@ const registroToLogin = () => {
     registroForm.style.display = "none";
     loginForm.style.display = "inherit";
 }
+
+

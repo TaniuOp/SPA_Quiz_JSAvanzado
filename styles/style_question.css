@@ -261,15 +261,15 @@ button:hover {
 /* RESPONSIVE */
 @media screen and (max-width: 1000px){
     h1{
-        font-size: 1.2em;
+        font-size: 1.7em;
     }
 
     h3, button{
-        font-size: 1em;
+        font-size: 1.2em;
     } 
 
-    label{
-        font-size: 0.8em;
+    p{
+        font-size: 0.6em;
     }
 
     .questionSection{
@@ -318,7 +318,7 @@ button:hover {
         font-size: 0.8em;
     } 
 
-    label{
+    p{
         font-size: 0.5em;
     }
 }
