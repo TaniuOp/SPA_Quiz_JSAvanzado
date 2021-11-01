@@ -50,6 +50,24 @@ const getQuestionData = async (questionNumber) => {
 const questionDiv =  document.getElementsByClassName("questionSection")[0];//obtenemos sección donde ira la pregunta  
 let questionButton = document.getElementById("submitSection")
 
+//ALEATORIZACION DE LA POSICION DE LAS RESPUESTAS
+let arrayRandom =  []
+
+const random4 = ()=>{
+  let elNumero
+  while(arrayRandom.length < 4){
+    elNumero = Math.floor(Math.random() * (5 - 1) +1);
+    if(!arrayRandom.includes(elNumero)){
+      arrayRandom.push(elNumero);
+    }
+  }
+}
+
+random4()
+
+console.log(arrayRandom)
+
+
 // AL PULSAR EL BOTON NEXT SE EJECUTAN VARIAS FUNCIONES
 questionButton.addEventListener("click", ()=> {    
     startData();
@@ -80,10 +98,10 @@ let respuesta3 = document.getElementById(`answer3`);
 let respuesta4 = document.getElementById(`answer4`);
 
 // Declaro las cajas de las respuestas
-const bloque1 = document.getElementById("optionone")
-const bloque2 = document.getElementById("optiontwo")
-const bloque3 = document.getElementById("optionthree")
-const bloque4 = document.getElementById("optionfour")
+const bloque1 = document.getElementById("option1")
+const bloque2 = document.getElementById("option2")
+const bloque3 = document.getElementById("option3")
+const bloque4 = document.getElementById("option4")
 
 
 async function startData(){
@@ -110,10 +128,10 @@ const esCorrecta = (p) => {
     console.log(correcta);
 }
 
-bloque1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece(), borderColor(optionone)});
-bloque2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece(), borderColor(optiontwo)});
-bloque3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece(), borderColor(optionthree)});
-bloque4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece(), borderColor(optionfour)});
+bloque1.addEventListener("click", ()=>{esCorrecta(respuesta1.textContent), botonDesaparece(), borderColor(option1)});
+bloque2.addEventListener("click", ()=>{esCorrecta(respuesta2.textContent), botonDesaparece(), borderColor(option2)});
+bloque3.addEventListener("click", ()=>{esCorrecta(respuesta3.textContent), botonDesaparece(), borderColor(option3)});
+bloque4.addEventListener("click", ()=>{esCorrecta(respuesta4.textContent), botonDesaparece(), borderColor(option4)});
 
 // AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
 let puntuacion = 0;
@@ -155,12 +173,40 @@ const borderColor = (n) => {
     n.style.border = "6px solid black";
 }
 
-// LIMITE 10 PREGUNTAS, a la 10 redirigue a resultados.
+// LIMITE 10 PREGUNTAS, a la 10 redirige a resultados.
 const limite = () => {
     if(preguntasCompletadas == 10) {
         window.location.replace("../pages/results.html");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
