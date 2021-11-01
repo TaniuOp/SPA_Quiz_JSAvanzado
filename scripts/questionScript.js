@@ -152,12 +152,12 @@ const validaCorrecta =  () => {
         alert("ENHORABUENA!!! RESPUESTA CORRECTA!!!");
         puntuacion++
     } else {
-        alert("LO SIENTO!!! RESPUESTA ERRONEA!!!")
+        alert(`LO SIENTO!!! RESPUESTA ERRONEA! LA RESPUESTA CORRECTA ERA: ${myGoodAnswer}`)
     }
     console.log("El estado de correcta es---> " + correcta);
     correcta = null;
     preguntasCompletadas++;
-    
+
     console.log(`NUMERO DE PREGUNTAS COMPLETADAS: ${preguntasCompletadas}`);
     console.log(`Esta es tu PUNTUACION --> ${puntuacion}`);
 }
@@ -192,7 +192,7 @@ const limite = () => {
     }
 }
 
-// AÑADIMOS LOS EVENTOS DE CLICK
+// AÑADIMOS LOS EVENTOS DE CLICK DE LAS RESPUESTAS.
 bloque1.addEventListener("click", ()=>{esCorrecta(bloque1.id), botonDesaparece(), borderColor(bloque1)});
 bloque2.addEventListener("click", ()=>{esCorrecta(bloque2.id), botonDesaparece(), borderColor(bloque2)});
 bloque3.addEventListener("click", ()=>{esCorrecta(bloque3.id), botonDesaparece(), borderColor(bloque3)});
