@@ -8,39 +8,193 @@
   font-family: 'Rampart One', cursive;
 }
 
+
+h1{
+  color: white;
+  padding: 7px;
+  font-size: 5rem;
+  
+}
+
+h3{
+  font-size: 2rem;
+}
+
+/* ESTRUCTURA BASICA DE LA PAGINA BODY MAIN */
 body{
   height: 100vh;
   width: 100vw;
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-h1{
-  color: white;
-  margin-top: 1vh;
-  padding: 7px;
-  font-size: 5rem;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#imagenLogo img{
-  width: 5vw;
-}
-
+/* HEADER */
 .headerTitle{
   display: flex;
   justify-content: center;
+  /* background-color: #F2BB3B; */
   align-items: center;
   width: 100vw;
 }
 
 #imagenLogo img{
-  width: 5vw;
+  width: 8vw;
+  animation: flotar 6s ease infinite normal;
+
 }
 
+@keyframes flotar {
+0% {
+  transform: translatey(0px);
+}
+50% {
+  transform: translatey(20px);
+}
+100% {
+  transform: translatey(0px);
+}
+}
+/* ////////////////////////////////////// */
+
+#tEstadisticas{
+  width: 20vw;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0.5vh;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+  padding: 0.3rem;
+  background-color: white;
+}
+
+#tEstadisticas p{
+  font-size: 1.5rem;
+  color: black;
+  
+}
+
+#moreInfo {
+  color: black;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid black;
+  width: 20vw;
+  margin-top: 1vh;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+
+#moreInfo:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+#cajaResult {
+  width: 40vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../assets/puntos.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#cajaResult p {
+  font-size: 1.2rem;
+  color: black;
+}
+
+
+
+
+p#myLastResult {
+  color: red;
+  font-size: 3rem;
+}
+
+
+#playAgain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 45vw;
+  margin: 0.5rem;
+  z-index: -10;
+  animation: respiracion 3s ease-out infinite normal;
+  /* max-width: 400px; */
+}
+
+#playAgain p {
+  color: white;
+}
+
+
+
+@keyframes respiracion {
+  0% {
+    transform: scale(0.8);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+
+
+#enlace { 
+  max-width: 400px;
+}
+
+@media screen and (max-width: 700px){
+#enlace { 
+  max-width: 50%;
+}
+}
+/* LA GRAFICA */
+
+ #graphicSection {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 60vw;
+   align-items: center
+ }
+
 #chart2 {
-    background: beige;
+  width: 70%;
+    background: white;
     border-radius: 10px;
     padding-top: 10px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+
   }
   
   #title{
@@ -62,15 +216,6 @@ h1{
     width: 80%;
   }
 
-  #enlace { 
-    max-width: 400px;
-  }
-
-  @media screen and (max-width: 700px){
-  #enlace { 
-    max-width: 50%;
-  }
-  }
   /* he conseguido esto en la documentacion de la grafica. Podemos jugar con ello a ver que puede ayudarnos a customizarla*/
 
   

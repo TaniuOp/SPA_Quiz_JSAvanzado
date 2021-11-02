@@ -71,6 +71,7 @@ const paintRankingGraphic = (dates, points) => {
 // Responsive de las lineas de la gráfica 
 let options = {
     seriesBarDistance: 15,
+    axisY: {onlyInteger: true}
    };
   
   let responsiveOptions = [
@@ -85,6 +86,10 @@ let options = {
   ];
   new Chartist.Line('#chart2', data, options, responsiveOptions); 
 }
+
+const AudioAplausos = document.getElementById("musicaFondo");
+AudioAplausos.volume = 0.4;
+AudioAplausos.play();
 
 
 
