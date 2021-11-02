@@ -106,10 +106,11 @@ h3{
 
 /* blocks to align answers */
 div.answerblockone, div.answerblocktwo{
-    padding: 30px;
+    padding: 0px 30px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+
 }
 
 ul{

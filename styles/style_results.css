@@ -103,12 +103,12 @@ h1{
   
   #labels{
     padding-top:10px;
-    display;block;
+    display:block;
     height: 30px;
     width: 100%;
     border-radius:4px;
     margin-bottom: 10px;
-    background-color: slategrey;
+    background-color: rgb(231, 4, 4);
     text-align:center;
   }
   

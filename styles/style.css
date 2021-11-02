@@ -301,12 +301,16 @@ form input {
 
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) {
-  h1 {
-    font-size: 1.3em;
+  h1, h2{
+    font-size: 1.4em;
   }
 
   #sino p {
     font-size: 0.7rem;
+  }
+
+  p{
+    font-size: 0.9rem;
   }
 
   .submitSection {
