@@ -71,6 +71,7 @@ const paintRankingGraphic = (dates, points) => {
 // Responsive de las lineas de la gráfica 
 let options = {
     seriesBarDistance: 15,
+    axisY: {onlyInteger: true}
    };
   
   let responsiveOptions = [
