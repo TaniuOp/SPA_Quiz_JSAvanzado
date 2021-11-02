@@ -17,6 +17,9 @@ h2 {
   text-align: center;
 }
 
+h3{
+  text-align: center;
+}
 /* LANDING CSS */
 
 body {
@@ -130,6 +133,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 60px;
 }
 
 #divRegister, #divLogin {
@@ -257,7 +261,7 @@ form input {
 }
 
 #sino p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: center;
   margin-top: 0.6rem;
   color: black;
@@ -300,12 +304,9 @@ form input {
   h1 {
     font-size: 1.3em;
   }
-  .questionSection {
-    min-height: auto;
-  }
 
-  .answersSection {
-    min-height: fit-content;
+  #sino p {
+    font-size: 0.7rem;
   }
 
   .submitSection {
@@ -331,4 +332,37 @@ form input {
   ul {
     padding: 4% 5%;
   }
+}
+
+
+
+
+@media screen and (max-width: 750px){
+  h1{
+      font-size: 1em;
+  }
+
+  h2 {
+      font-size: 0.8em;
+  } 
+
+  p, label, input{
+      font-size: 0.5em;
+  }
+}
+
+
+/* FOOTER */
+footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.342);
+  color: white;
+  text-align: center;
+}
+
+p#footerP{
+  font-size: 0.5em;
 }

@@ -1,5 +1,44 @@
+
+/* GENERAL STYLES */
+*{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  box-sizing: border-box;
+  font-family: 'Rampart One', cursive;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+  background-repeat: no-repeat;
+}
+
+h1{
+  color: white;
+  margin-top: 1vh;
+  padding: 7px;
+  font-size: 5rem;
+}
+
+#imagenLogo img{
+  width: 5vw;
+}
+
+.headerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+#imagenLogo img{
+  width: 5vw;
+}
+
 #chart2 {
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+    background: beige;
     border-radius: 10px;
     padding-top: 10px;
   }
@@ -17,6 +56,21 @@
     color: #d85a5d
   }
 
+  .ct-chart{
+    display: flex;
+    height: 200px;
+    width: 80%;
+  }
+
+  #enlace { 
+    max-width: 400px;
+  }
+
+  @media screen and (max-width: 700px){
+  #enlace { 
+    max-width: 50%;
+  }
+  }
   /* he conseguido esto en la documentacion de la grafica. Podemos jugar con ello a ver que puede ayudarnos a customizarla*/
 
   

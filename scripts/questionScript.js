@@ -1,3 +1,44 @@
+// FIREBASE - FIRESTORE para guardar puntuacion de usuario asociado al user UID
+
+//Inicializamos Firebase 
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { collection, getFirestore, addDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+// Datos de nuestro proyecto 
+const firebaseConfig = {
+    apiKey: "AIzaSyA7vjJIZJFdHdQLG77I3Uch_8f8mzhzqLs",
+    authDomain: "quizztaniuruben.firebaseapp.com",
+    projectId: "quizztaniuruben",
+    storageBucket: "quizztaniuruben.appspot.com",
+    messagingSenderId: "692644756869",
+    appId: "1:692644756869:web:be9d16807787b8e5df98ec"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Obtenemos la info del usuario logeado para crear la colección con su ID
+//using onAuthStateChanged() to set an observer you "ensure that the Auth object isn't in an intermediate state—such as initialization—when you get the current user"
+
+const auth = getAuth();
+let userUid 
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userUid = user.uid;
+    console.log("Current User UID:" + userUid);
+    // setUserUid(userUid);
+    return userUid
+  } else {
+    window.alert("You need to be logged in to play!");
+    location.href = "/index.html";
+  }
+});
+
+// PREGUNTAS 
+
 let allData={} // variable donde meteremos el objeto 
 
 // Obtenemos las preguntas de la API 
@@ -76,13 +117,15 @@ const redeclararRespuestas = () =>{
 
 // AL PULSAR EL BOTON NEXT SE EJECUTAN VARIAS FUNCIONES
 //la funcion startData enviará como parametro en getQuestionData el numero de la siguiente pregunta.
-questionButton.addEventListener("click", ()=> {    
+questionButton.addEventListener("click", async()=> {    
     random4();
     redeclararRespuestas();
     startData();
     validaCorrecta();
     botonDesaparece();
-    limite();
+    // limite();
+    await limite().then(data => data);    
+    console.log("CURRENT: "+auth.currentUser.uid)
 }) 
 
 //Generamos un num random para pasarle a la pregunta (del 1 al 10)
@@ -118,6 +161,7 @@ let bloque4 = document.getElementById(`option4`)
 async function startData(){
     await getQuestions() 
     await getQuestionData(getRandomInt) 
+
     pregunta.innerHTML = await myQuestion
     respuesta1.innerHTML = await myBadAnswers[0];
     respuesta2.innerHTML = await myBadAnswers[1];
@@ -148,17 +192,17 @@ let preguntasCompletadas = 0
 
 const validaCorrecta =  () => {
     if(correcta == true) {
-        alert("ENHORABUENA!!! RESPUESTA CORRECTA!!!");
+        alert("GOOD ONE! You have win +1 point!!!");
         puntuacion++
     } else {
-        alert(`LO SIENTO!!! RESPUESTA ERRONEA! LA RESPUESTA CORRECTA ERA: ${myGoodAnswer}`)
+        alert(`SORRY. Not this time :(!! The correct answer was: ${myGoodAnswer}`);
+
     }
     console.log("El estado de correcta es---> " + correcta);
     correcta = null;
     preguntasCompletadas++;
-
-    console.log(`NUMERO DE PREGUNTAS COMPLETADAS: ${preguntasCompletadas}`);
-    console.log(`Esta es tu PUNTUACION --> ${puntuacion}`);
+    console.log(`Completed questions: ${preguntasCompletadas}`);
+    console.log(`User Score: --> ${puntuacion}`);
 }
 
 
@@ -184,12 +228,16 @@ const borderColor = (n) => {
     n.style.border = "6px solid black";
 }
 
-// LIMITE 10 PREGUNTAS, a la 10 redirige a resultados.
-const limite = () => {
-    if(preguntasCompletadas == 10) {
-        window.location.replace("../pages/results.html");
-    }
-}
+//Obtenemos el día de hoy 
+let quizDate = new Date().toLocaleDateString()
+console.log(quizDate)
+
+// // LIMITE 10 PREGUNTAS, a la 10 redirige a resultados.
+// const limite = () => {
+//     if(preguntasCompletadas == 10) {
+//         window.location.replace("../pages/results.html");
+//     }
+// }
 
 // AÑADIMOS LOS EVENTOS DE CLICK DE LAS RESPUESTAS.
 bloque1.addEventListener("click", ()=>{esCorrecta(bloque1.id), botonDesaparece(), borderColor(bloque1)});
@@ -198,32 +246,18 @@ bloque3.addEventListener("click", ()=>{esCorrecta(bloque3.id), botonDesaparece()
 bloque4.addEventListener("click", ()=>{esCorrecta(bloque4.id), botonDesaparece(), borderColor(bloque4)});
 
 
+var quizExactTime = new Date()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// LIMITE 10 PREGUNTAS, a la 10 redirigue a resultados.
+const limite = async() => {
+    if(preguntasCompletadas === 10) {
+     let setFirebase = await addDoc(collection(db, 'halloween_quiz', auth.currentUser.uid, "attempts"), {
+     goodAnswers: puntuacion,
+     date: quizDate,
+     createdAt: quizExactTime
+    })
+    window.location.replace("../pages/results.html")
+    }
+    }
 
 
