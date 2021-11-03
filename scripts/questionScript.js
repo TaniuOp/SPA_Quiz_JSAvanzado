@@ -102,7 +102,6 @@ const random4 = ()=>{
 }
 random4()
 
-
 // REDECLARO EL VALOR DE LAS RESPUESTAS PARA QUE SIGAN PINTANDOSE DE FORMA ALEATORIA CON EL NEXT
 const redeclararRespuestas = () =>{
     respuesta1 = document.getElementById(`answer${arrayRandom[0]}`);
@@ -170,15 +169,34 @@ const esCorrecta = (p) => {
     console.log(correcta);
 }
 
+
+// AÑADO SONIDOS SEGUN LAS RESPUESTAS SON CORRECTAS O INCORRECTAS
+
+const AudioCorrecto = document.getElementById("sonidoCorrecto");
+const AudioIncorrecto = document.getElementById("sonidoIncorrecto");
+
+const playAudioCorrectoIncorrecto = () =>{
+    if(correcta == true){
+        AudioCorrecto.play();
+    }else{
+        AudioIncorrecto.play();
+    }
+}
+
+let VolmusicaFondo = document.getElementById("musicaFondo");
+VolmusicaFondo.volume = 0.2;
+
 // AL PULSAR NEXT COMPARAMOS EL BOOLEANO CORRECTA PARA AUMENTAR PUNTUACION Y PONER UN MENSAJE DE CORRECTO O INCORRECTO
 let puntuacion = 0;
 let preguntasCompletadas = 0
 
 const validaCorrecta =  () => {
     if(correcta == true) {
+        playAudioCorrectoIncorrecto();
         alert("GOOD ONE! You have win +1 point!!!");
         puntuacion++
     } else {
+        playAudioCorrectoIncorrecto();
         alert(`SORRY. Not this time :(!! The correct answer was: ${myGoodAnswer}`);
 
     }
@@ -236,6 +254,14 @@ const limite = async() => {
     })
     window.location.replace("../pages/results.html")
     }
-    }
+}
 
 
+
+
+
+// const audioMal = new Audio('../assets/incorrect.mp3');
+
+
+// const audioLevel = document.getElementById("musicaFondo");
+// audioLevel.volume = 0.2; 

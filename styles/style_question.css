@@ -367,3 +367,18 @@ li p {
     display: none;
 }
 
+
+/* FOOTER */
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.342);
+    color: white;
+    text-align: center;
+  }
+  
+  p#footerP{
+    font-size: 0.5em;
+  }

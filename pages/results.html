@@ -20,31 +20,39 @@
 </head>
 
 <body>
-    <div class="headerTitle">
-        <div id="imagenLogo">
-            <img src="../assets/logo.png" alt="Logo de la pagina">         
+    <main>
+        <div class="headerTitle">
+            <div id="imagenLogo">
+                <a href="../index.html"><img id="flotar" src="../assets/logo.png" alt="Logo de la pagina"></a>
+            </div>
+            <h1>Halloween Quiz</h1>
         </div>
-        <h1>Halloween Quiz</h1>
-    </div>
-    <!-- GRAFICA -->
-    <section id="graphicSection">
-        <h2>Your last game stadistics</h2>
-        <div class="ct-chart ct-golden-section" id="chart2"></div>
-    </section>
-
-    <section id="moreInfo"></section><br><br>
-
-    <h3>Your last result is:</h3>
-    <p id="myLastResult"> </p>
-    <br>    
-    <h3>Play again:</h3>
-    <section id="playAgain">
-        <a href="./question.html">
-            <img id="enlace" src="../assets/logo.png" alt="Start again">
-        </a>
-    </section>
-    <script type="module" src="../scripts/resultScript.js"></script> 
-</body>
-</html>
-
-
+        <!-- GRAFICA -->
+        <section id="graphicSection">
+            <div id="cajaResult">
+                <p id="myLastResult"> </p>
+            </div>
+            <div id="tEstadisticas">
+                <p>Your last game stadistics:</p>
+            </div>
+            <div class="ct-chart ct-golden-section" id="chart2"></div>
+            <div id="moreInfo"></div>
+        </section>
+        <br>    
+        <section id="playAgain">
+            <p>CLICK TO PLAY AGAIN:</p>
+            <a href="../pages/question.html">
+                <img id="enlace" src="../assets/logo.png" alt="Start again">
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p id="footerP">Por Taniu y Ruben para el curso de FullStack - TheBridge</p>
+    </footer>
+        <audio id="musicaFondo" autoplay src="../assets/aplausos.mp3"></audio>
+        <script type="module" src="../scripts/resultScript.js"></script> 
+    </body>
+    </html>
+    
+    
+    
