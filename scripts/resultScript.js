@@ -40,7 +40,7 @@ if (user) {
     points.push(doc.data().goodAnswers)
     dates.push(doc.data().date.toString())
   });
-  console.log(points, dates)
+  console.log(points, dates.sort())
   paintRankingGraphic(dates, points)
 
   //Obtenemos la media de todos los quiz 
@@ -48,7 +48,7 @@ if (user) {
     let avg = sum / points.length;
     console.log(avg)
     let getMoreInfoSection = document.getElementById("moreInfo")
-    getMoreInfoSection.innerHTML = "Your current media is " + avg + " points"
+    getMoreInfoSection.innerHTML = "Your current media is " + avg.toFixed(2) + " points"
 
 
   // Ultima jugada 

@@ -300,15 +300,29 @@ form input {
   transform: translateY(10px);
 }
 
+footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.342);
+  color: white;
+  text-align: center;
+}
+
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) {
-  h1 {
-    font-size: 1.3em;
+@media screen and (max-width: 1200px) {
+  h1, h2{
+    font-size: 1.4em;
   }
 
   #sino p {
     font-size: 0.7rem;
+  }
+
+  p{
+    font-size: 0.9rem;
   }
 
   .submitSection {
@@ -334,12 +348,17 @@ form input {
   ul {
     padding: 4% 5%;
   }
+
+  p#footerP{
+    font-size: 15px;
+    color: #000;
+  }
 }
 
 
 
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 650px){
   h1{
       font-size: 1em;
   }
@@ -351,20 +370,12 @@ form input {
   p, label, input{
       font-size: 0.5em;
   }
+
+  p#footerP{
+    font-size: 12px;
+    color: white;
+  }
+  
 }
 
 
-/* FOOTER */
-footer {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.342);
-  color: white;
-  text-align: center;
-}
-
-p#footerP{
-  font-size: 0.5em;
-}

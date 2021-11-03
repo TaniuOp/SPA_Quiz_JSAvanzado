@@ -79,7 +79,6 @@ main {
 #tEstadisticas p{
   font-size: 1.5rem;
   color: black;
-  
 }
 
 #moreInfo {
@@ -105,7 +104,7 @@ main {
 
 #cajaResult {
   width: 40vw;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,13 +121,10 @@ main {
 }
 
 
-
-
 p#myLastResult {
   color: red;
   font-size: 3rem;
 }
-
 
 #playAgain {
   display: flex;
@@ -137,7 +133,6 @@ p#myLastResult {
   flex-direction: column;
   width: 45vw;
   margin: 0.5rem;
-  z-index: -10;
   animation: respiracion 3s ease-out infinite normal;
   /* max-width: 400px; */
 }
@@ -145,8 +140,6 @@ p#myLastResult {
 #playAgain p {
   color: white;
 }
-
-
 
 @keyframes respiracion {
   0% {
@@ -166,17 +159,10 @@ p#myLastResult {
   }
 }
 
-
-
 #enlace { 
   max-width: 400px;
 }
 
-@media screen and (max-width: 700px){
-#enlace { 
-  max-width: 50%;
-}
-}
 /* LA GRAFICA */
 
  #graphicSection {
@@ -188,13 +174,12 @@ p#myLastResult {
  }
 
 #chart2 {
-  width: 70%;
+    width: 70%;
     background: white;
     border-radius: 10px;
     padding-top: 10px;
     border: 2px solid black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
-
   }
   
   #title{
@@ -215,62 +200,113 @@ p#myLastResult {
     height: 200px;
     width: 80%;
   }
-
-  /* he conseguido esto en la documentacion de la grafica. Podemos jugar con ello a ver que puede ayudarnos a customizarla*/
-
   
   /* First series a */
-  
+
   .ct-series-a .ct-line {
-    stroke: black;
+    stroke:black;
     stroke-width: 4px;
   }
   
   .ct-series-a .ct-point {
-    stroke: #d85a5d;
+    stroke: #FF0100;
     stroke-width: 14px;
   }
-  
-  
-  /* Second series b */
-  
-  .ct-series-b .ct-line {
-    stroke: Orange;
-    stroke-width: 4px;
-  }
-  
-  .ct-series-b .ct-point {
-    stroke: #86C093;
-    stroke-width: 14px;
-  }
-  
-  /* Custom Css for the labels */
-  
-  #labels{
-    padding-top:10px;
-    display;block;
-    height: 30px;
+
+  footer {
+    position: fixed;
     width: 100%;
-    border-radius:4px;
-    margin-bottom: 10px;
-    background-color: slategrey;
-    text-align:center;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.342);
+    color: white;
+    text-align: center;
   }
-  
-  #series-b{
-    float:right;
+
+/* RESPONSIVE */
+@media screen and (max-width: 1200px) {
+
+  h1{
+    font-size: 2em;
   }
-  
-  
-  .label-series-a{
-    stroke:rgb(220, 9, 9);
-    fill:orange;
-    stroke-width: 4px;
+
+  #tEstadisticas{
+    margin-top: 5%;
+    font-size: 0.6rem;
+    width: fit-content;
+
   }
-  
-  .label-series-b{
-    stroke:red;
-    fill:black;
-    stroke-width: 4px;
+
+  #tEstadisticas p{
+    font-size: 1rem;
+    width: fit-content;
   }
-  
+
+  p#myLastResult{
+    font-size: 1.6rem;
+  }
+
+  #cajaResult {
+    height: 15vh;
+    margin-top: 5%;
+  }
+
+  #moreInfo{
+    font-size: 0.8em;
+    width: fit-content;
+    margin-top: 5%;
+  }
+
+  #enlace { 
+    max-width: 90%;
+  }
+
+  p#footerP{
+    font-size: 15px;
+    color: #000;
+  }
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 650px){
+  h1{
+      font-size: 2em;
+  }
+
+  #tEstadisticas {
+    margin-top: 10%;
+  }
+
+  #tEstadisticas p{
+    font-size: 0.8rem;
+    width: fit-content;
+  }
+
+  #cajaResult {
+    height: 15vh;
+  }
+
+  p#myLastResult{
+    font-size: 1.3rem;
+  }
+
+  #moreInfo{
+    font-size: 0.8em;
+    width: fit-content;
+    margin-top: 20%;
+  }
+
+  #enlace { 
+    max-width: 90%;
+  }
+
+  p#footerP{
+    font-size: 12px;
+    color: white;
+  }
+}
