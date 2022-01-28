@@ -1,0 +1,312 @@
+
+/* GENERAL STYLES */
+*{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  box-sizing: border-box;
+  font-family: 'Rampart One', cursive;
+}
+
+
+h1{
+  color: white;
+  padding: 7px;
+  font-size: 5rem;
+  
+}
+
+h3{
+  font-size: 2rem;
+}
+
+/* ESTRUCTURA BASICA DE LA PAGINA BODY MAIN */
+body{
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+.headerTitle{
+  display: flex;
+  justify-content: center;
+  /* background-color: #F2BB3B; */
+  align-items: center;
+  width: 100vw;
+}
+
+#imagenLogo img{
+  width: 8vw;
+  animation: flotar 6s ease infinite normal;
+
+}
+
+@keyframes flotar {
+0% {
+  transform: translatey(0px);
+}
+50% {
+  transform: translatey(20px);
+}
+100% {
+  transform: translatey(0px);
+}
+}
+/* ////////////////////////////////////// */
+
+#tEstadisticas{
+  width: 20vw;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0.5vh;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+  padding: 0.3rem;
+  background-color: white;
+}
+
+#tEstadisticas p{
+  font-size: 1.5rem;
+  color: black;
+}
+
+#moreInfo {
+  color: black;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid black;
+  width: 20vw;
+  margin-top: 1vh;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+
+#moreInfo:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+#cajaResult {
+  width: 40vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../assets/puntos.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#cajaResult p {
+  font-size: 1.2rem;
+  color: black;
+}
+
+
+p#myLastResult {
+  color: red;
+  font-size: 3rem;
+}
+
+#playAgain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 45vw;
+  margin: 0.5rem;
+  animation: respiracion 3s ease-out infinite normal;
+  /* max-width: 400px; */
+}
+
+#playAgain p {
+  color: white;
+}
+
+@keyframes respiracion {
+  0% {
+    transform: scale(0.8);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+#enlace { 
+  max-width: 400px;
+}
+
+/* LA GRAFICA */
+
+ #graphicSection {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 60vw;
+   align-items: center
+ }
+
+#chart2 {
+    width: 70%;
+    background: white;
+    border-radius: 10px;
+    padding-top: 10px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.418), 0 6px 20px 0 rgba(0, 0, 0, 0.473);
+  }
+  
+  #title{
+    color:#d85a5d;
+    margin-bottom: 10px;
+  }
+  
+  h2{
+   color: #04AEF1
+  }
+
+  h3{
+    color: #d85a5d
+  }
+
+  .ct-chart{
+    display: flex;
+    height: 200px;
+    width: 80%;
+  }
+  
+  /* First series a */
+
+  .ct-series-a .ct-line {
+    stroke:black;
+    stroke-width: 4px;
+  }
+  
+  .ct-series-a .ct-point {
+    stroke: #FF0100;
+    stroke-width: 14px;
+  }
+
+  footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.342);
+    color: white;
+    text-align: center;
+  }
+
+/* RESPONSIVE */
+@media screen and (max-width: 1200px) {
+
+  h1{
+    font-size: 2em;
+  }
+
+  #tEstadisticas{
+    margin-top: 5%;
+    font-size: 0.6rem;
+    width: fit-content;
+
+  }
+
+  #tEstadisticas p{
+    font-size: 1rem;
+    width: fit-content;
+  }
+
+  p#myLastResult{
+    font-size: 1.6rem;
+  }
+
+  #cajaResult {
+    height: 15vh;
+    margin-top: 5%;
+  }
+
+  #moreInfo{
+    font-size: 0.8em;
+    width: fit-content;
+    margin-top: 5%;
+  }
+
+  #enlace { 
+    max-width: 90%;
+  }
+
+  p#footerP{
+    font-size: 15px;
+    color: #000;
+  }
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 650px){
+  h1{
+      font-size: 2em;
+  }
+
+  #tEstadisticas {
+    margin-top: 10%;
+  }
+
+  #tEstadisticas p{
+    font-size: 0.8rem;
+    width: fit-content;
+  }
+
+  #cajaResult {
+    height: 15vh;
+  }
+
+  p#myLastResult{
+    font-size: 1.3rem;
+  }
+
+  #moreInfo{
+    font-size: 0.8em;
+    width: fit-content;
+    margin-top: 20%;
+  }
+
+  #enlace { 
+    max-width: 90%;
+  }
+
+  p#footerP{
+    font-size: 12px;
+    color: white;
+  }
+}

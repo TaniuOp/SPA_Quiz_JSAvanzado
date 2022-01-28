@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style_question.css">
+    <link rel="icon" type="image/png" href="../assets/favicon_logo.png">
+    <title>Questions - Halloween Quiz</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="headerTitle">
+        <div id="imagenLogo">
+            <a href="../index.html"><img id="flotar" src="../assets/logo.png" alt="Logo de la pagina"></a>
+        </div>
+        <h1>Halloween Quiz</h1>
+    </div>
+    <main class="mainPage">
+        <div class="divCenterSection">
+        <section class="quizSection">
+            <section class="questionSection">
+                <h3 id="questionText">Question</h3>
+            </section>
+            <section class="answersSection">
+                    <ul>
+                        <div class="answerblockone">
+                        <li id="option1">
+                            <p id="answer1"></p>
+                        </li>
+                        <li id="option2">
+                            <p id="answer2"></p>
+                        </li>
+                        </div>                
+                        <div class="answerblocktwo">
+                        <li id="option3">
+                            <p id="answer3" ></p>
+                        </li>
+                        <li id="option4">
+                            <p id="answer4"></p>
+                        </li>
+                        </div>
+                    </ul>
+                    <div id="submitSection">
+                        <p>Next</p>
+                        <a id="fin" href='../results.html'></a>     
+                    </div>
+            </section>
+        </section>
+        </div>
+        <audio id="musicaFondo" autoplay src="../assets/videoplayback.webm"></audio>
+        <audio id="sonidoCorrecto" src="../assets/Correct-answer.mp3"></audio>
+        <audio id="sonidoIncorrecto" src="../assets/incorrect.mp3"></audio>
+
+    </main>
+
+    <footer>
+        <p id="footerP">Por Taniu y Ruben para el curso de FullStack - TheBridge</p>
+    </footer>
+    
+    <script type="module" src="../scripts/questionScript.js"></script>
+</html>
+
+
+

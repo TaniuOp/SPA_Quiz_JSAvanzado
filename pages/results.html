@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grafica -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style_results.css">
+    <link rel="icon" type="image/png" href="../assets/favicon_logo.png">
+
+    <title>Results</title>
+</head>
+
+<body>
+    <main>
+        <div class="headerTitle">
+            <div id="imagenLogo">
+                <a href="../index.html"><img id="flotar" src="../assets/logo.png" alt="Logo de la pagina"></a>
+            </div>
+            <h1>Halloween Quiz</h1>
+        </div>
+        <!-- GRAFICA -->
+        <section id="graphicSection">
+            <div id="cajaResult">
+                <p id="myLastResult"> </p>
+            </div>
+            <div id="tEstadisticas">
+                <p>Your last game stadistics:</p>
+            </div>
+            <div class="ct-chart ct-golden-section" id="chart2"></div>
+            <div id="moreInfo"></div>
+        </section>
+        <br>    
+        <section id="playAgain">
+            <p>CLICK TO PLAY AGAIN:</p>
+            <a href="../pages/question.html">
+                <img id="enlace" src="../assets/logo.png" alt="Start again">
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p id="footerP">Por Taniu y Ruben para el curso de FullStack - TheBridge</p>
+    </footer>
+        <audio id="musicaFondo" autoplay src="../assets/aplausos.mp3"></audio>
+        <script type="module" src="../scripts/resultScript.js"></script> 
+    </body>
+    </html>
+    
+    
+    
