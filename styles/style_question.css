@@ -99,7 +99,6 @@ h3{
 /* SPA - ANSWERS */
 .answersSection{
     width: 90%;
-    min-height: 450px;
     display: flex;
     flex-direction: column;
 }
